@@ -1,0 +1,10 @@
+{
+  "name": "domEdge",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "~1.3.0",
+    "jquery": "~2.1.1",
+    "underscore": "~1.7.0"
+  },
+  "devDependencies": {}
+}
