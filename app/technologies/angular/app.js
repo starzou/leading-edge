@@ -17,6 +17,6 @@
 var App = angular.module('App', []);
 
 // 在模块上 注册controller
-App.controller('mainCtrl', ['$scope', function ($scope) {
+App.controller('appCtrl', ['$scope', function ($scope) {
     $scope.word = 'Hello Angular!';
 }]);
