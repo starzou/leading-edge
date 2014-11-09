@@ -16,8 +16,8 @@
 var buttons = document.querySelectorAll('button'),
     button1 = buttons[0],
     target = button1,
-    myClick = function () {
-        console.log('调用 %s 元素的 click事件监听器', this);
+    myClick = function (event) {
+        console.log('调用 %s 元素的 click事件监听器', this, event);
     };
 
 buttons[1].addEventListener('click', function (event) {
@@ -29,8 +29,8 @@ buttons[1].addEventListener('click', function (event) {
 
 
         // addEventListener 方式, 添加事件监听器
-        target.addEventListener('click', myClick, true); // 事件捕获
-//        target.addEventListener('click', myClick, false); //事件冒泡, 不设置, 默认
+//        target.addEventListener('click', myClick, true); // 事件捕获
+        target.addEventListener('click', myClick, false); //事件冒泡, 不设置, 默认
 
         target = target.parentNode;
     }
