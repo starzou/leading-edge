@@ -112,9 +112,9 @@ App.directive('sayHello', [function () {
         restrict: 'A',
         replace: true,
         scope: {
-            title: '@',
+            title: '=',
             text: '@'
         },
-        template: '<h3 title="{{title}}">{{text}}</h3>'
+        template: '<div><h3 title="{{title}}">{{text}}</h3><label>title:</label><input type="text" ng-model="title" /></div>'
     };
 }]);
