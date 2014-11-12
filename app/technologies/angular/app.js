@@ -27,6 +27,8 @@ App.controller('appCtrl', ['$scope' , '$filter', function ($scope, $filter) {
 
     $scope.date = new Date();
 
+    $scope.title = 'Hi Guys!';
+
     /**
      * 使用$filter 服务
      */
@@ -109,6 +111,10 @@ App.directive('sayHello', [function () {
     return {
         restrict: 'A',
         replace: true,
-        template: '<h3>Hi Guys!</h3>'
+        scope: {
+            title: '@',
+            text: '@'
+        },
+        template: '<h3 title="{{title}}">{{text}}</h3>'
     };
 }]);
