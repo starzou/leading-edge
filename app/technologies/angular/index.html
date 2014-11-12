@@ -9,12 +9,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular 实践</title>
+    <style>
+        .ng-invalid {
+            border: 2px solid red;
+        }
+        .ng-valid {
+            border: 2px solid green;
+        }
+    </style>
 </head>
 <body>
     <div ng-controller="appCtrl" ng-cloak>
         <div>
             <h2>过滤器使用</h2>
-
             <p ng-bind="word + name | lowercase | capitalize"></p>
 
             <p ng-bind="date | date:'yyyy-MM-dd hh:mm:ss.sss'"></p>
@@ -41,6 +48,21 @@
                     <button ng-click="removeUser($index);">移除</button>
                 </li>
             </ul>
+        </div>
+
+        <div>
+            <h2>表单验证</h2>
+            <form name="regForm" novalidate>
+                <div>
+                    <label>Name:</label>
+                    <input type="text" ng-model="name" required minlength="2" maxlength="6"/>
+                </div>
+                <div>
+                    <label>Email:</label>
+                    <input type="email" ng-model="email" required/>
+                </div>
+                <button type="submit">提交</button>
+            </form>
         </div>
 
     </div>
