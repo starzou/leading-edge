@@ -18,7 +18,10 @@ var App = angular.module('App', []);
 
 // 在模块上 注册controller
 App.controller('appCtrl', ['$scope' , '$filter', function ($scope, $filter) {
+
     $scope.word = 'Hello ';
+
+    $scope.date = new Date();
 
     /**
      * 使用$filter 服务
