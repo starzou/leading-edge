@@ -12,7 +12,24 @@
 </head>
 <body>
     <div ng-controller="appCtrl">
-        {{word}}
+        <p>
+            {{word + name | lowercase}}
+        </p>
+
+        <p>
+            <input type="text" ng-model="name"/>
+            <button ng-click="addUser(name);">添加</button>
+        </p>
+
+        <p>
+            <label>按名字过滤:</label>
+            <input type="text" ng-model="filterName"/>
+        </p>
+
+        <ul>
+            <li ng-repeat="user in users | filter:filterName" ng-bind="user.id + ':' + user.name"></li>
+        </ul>
+
     </div>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="app.js"></script>

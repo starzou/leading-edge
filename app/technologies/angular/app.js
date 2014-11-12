@@ -17,6 +17,21 @@
 var App = angular.module('App', []);
 
 // 在模块上 注册controller
-App.controller('appCtrl', ['$scope', function ($scope) {
-    $scope.word = 'Hello Angular!';
+App.controller('appCtrl', ['$scope' , '$filter', function ($scope, $filter) {
+    $scope.word = 'Hello ';
+
+    /**
+     * 使用$filter 服务
+     */
+    $scope.name = $filter('lowercase')('StarZou');
+
+    $scope.users = [
+        {id: 1, name: 'star1'},
+        {id: 2, name: 'star2'},
+        {id: 3, name: 'star3'},
+    ];
+
+    $scope.addUser = function (name) {
+        $scope.users.push({id: Date.now(), name: name});
+    }
 }]);
