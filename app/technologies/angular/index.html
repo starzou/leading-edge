@@ -11,26 +11,37 @@
     <title>Angular 实践</title>
 </head>
 <body>
-    <div ng-controller="appCtrl">
+    <div ng-controller="appCtrl" ng-cloak>
         <div>
-            <p ng-bind="word + name | lowercase"></p>
+            <h2>过滤器使用</h2>
+
+            <p ng-bind="word + name | lowercase | capitalize"></p>
 
             <p ng-bind="date | date:'yyyy-MM-dd hh:mm:ss.sss'"></p>
+
+            <p ng-bind="users[users.length - 1] | json"></p>
         </div>
 
-        <p>
-            <input type="text" ng-model="name"/>
-            <button ng-click="addUser(name);">添加</button>
-        </p>
+        <div>
+            <h2>Angular 使用</h2>
+            <p>
+                <label>名字:</label>
+                <input type="text" ng-model="name"/>
+                <button ng-click="addUser(name);">添加</button>
+            </p>
 
-        <p>
-            <label>按名字过滤:</label>
-            <input type="text" ng-model="filterName"/>
-        </p>
+            <p>
+                <label>按名字过滤:</label>
+                <input type="text" ng-model="filterName"/>
+            </p>
 
-        <ul>
-            <li ng-repeat="user in users | filter:filterName" ng-bind="user.id + ':' + user.name"></li>
-        </ul>
+            <ul>
+                <li ng-repeat="user in users | filter:{$:filterName} | limitTo : 8">
+                    <span ng-bind="user.id + ':' + user.name"></span>
+                    <button ng-click="removeUser($index);">移除</button>
+                </li>
+            </ul>
+        </div>
 
     </div>
     <script src="/bower_components/angular/angular.js"></script>
