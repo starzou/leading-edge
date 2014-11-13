@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    <h1 ng-bind="name" style="color: red;"></h1>
+    <h1 ng-bind="app.name" style="color: red;display: inline-block;"></h1><span ng-bind="app.date | date:'yyyy-MM-dd hh:mm:ss.sss'"></span>
     <div ng-controller="appCtrl" ng-cloak>
         <div>
             <h2>过滤器使用</h2>

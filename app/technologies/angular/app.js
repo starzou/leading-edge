@@ -16,8 +16,15 @@
 /**
  * 定义模块
  */
-var App = angular.module('App', []).run(['$rootScope', function ($rootScope) {
-    $rootScope.name = 'Angular Tutorial 1.0.0 alpha';
+var App = angular.module('App', []).run(['$rootScope', '$interval', function ($rootScope, $interval) {
+    $rootScope.app = {
+        name: 'Angular Tutorial 1.0.0 alpha',
+        date: new Date()
+    };
+
+    $interval(function () {
+        $rootScope.app.date = new Date();
+    }, 100, 20);
 }]);
 
 /**
@@ -120,6 +127,7 @@ App.controller('internalDirectiveController', ['$scope', '$timeout', function ($
     $timeout(function () {
         $scope.imgUrl = '/images/1.jpg';
         console.log($scope);
+        $scope.app.date = '加载完成';
     }, 2000);
 }]);
 
