@@ -18,7 +18,8 @@
  */
 var App = angular.module('App', []).run(['$rootScope', '$interval', function ($rootScope, $interval) {
     $rootScope.app = {
-        name: 'Angular Tutorial 1.0.0 alpha',
+        name: 'Angular Tutorial',
+        version: '1.0.0 alpha',
         date: new Date()
     };
 
@@ -123,6 +124,8 @@ App.directive('validateField', function () {
  */
 App.controller('internalDirectiveController', ['$scope', '$timeout', function ($scope, $timeout) {
     $scope.appUrl = 'app.js';
+
+    $scope.tplUrl = 'hiTemplate.html';
 
     $timeout(function () {
         $scope.imgUrl = '/images/1.jpg';
