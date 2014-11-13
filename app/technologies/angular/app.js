@@ -116,7 +116,7 @@ App.controller('internalDirectiveController', ['$scope', '$timeout', function ($
     $scope.appUrl = 'app.js';
 
     $timeout(function () {
-        $scope.imgUrl = '1.jpg';
+        $scope.imgUrl = '/images/1.jpg';
         console.log($scope);
     }, 2000);
 }]);
