@@ -16,7 +16,9 @@
 /**
  * 定义模块
  */
-var App = angular.module('App', []);
+var App = angular.module('App', []).run(['$rootScope', function ($rootScope) {
+    $rootScope.name = 'Angular Tutorial 1.0.0 alpha';
+}]);
 
 /**
  * 注册controller
