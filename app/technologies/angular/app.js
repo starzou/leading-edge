@@ -21,7 +21,7 @@ var App = angular.module('App', []);
 /**
  * 注册controller
  */
-App.controller('appCtrl', ['$scope' , '$filter', function ($scope, $filter) {
+App.controller('appCtrl', ['$scope', '$filter', function ($scope, $filter) {
 
     $scope.word = 'hello ';
 
@@ -67,7 +67,8 @@ App.directive('validateForm', function () {
         link: function (scope, element, attrs, ngModel) {
             var form = scope[attrs.name];
             console.log('validateForm', arguments, form);
-        }};
+        }
+    };
 });
 
 App.directive('validateField', function () {
@@ -104,8 +105,21 @@ App.directive('validateField', function () {
 //            scope.$watch(attrs.ngModel, validateFn);
 
             element.bind('keyup', validateFn);
-        }};
+        }
+    };
 });
+
+/**
+ * 内部指令 测试控制器
+ */
+App.controller('internalDirectiveController', ['$scope', '$timeout', function ($scope, $timeout) {
+    $scope.appUrl = 'app.js';
+
+    $timeout(function () {
+        $scope.imgUrl = '1.jpg';
+        console.log($scope);
+    }, 2000);
+}]);
 
 App.directive('sayHello', [function () {
     return {

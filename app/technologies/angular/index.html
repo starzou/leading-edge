@@ -54,11 +54,40 @@
         </div>
 
         <div>
-            <h2>指令</h2>
+            <h2>自定义指令</h2>
 
             <div say-hello title="title" text="{{date}}"></div>
             <label>scope title:</label>
             <input type="text" ng-model="title"/>
+        </div>
+
+        <div ng-controller="internalDirectiveController">
+            <h2>内置指令</h2>
+            <ul>
+                <li>
+                    <button ng-disabled="1">按钮</button>
+                </li>
+                <li>
+                    <input type="text" ng-readonly="1" value="123"/>
+                </li>
+                <li>
+                    <input type="radio" ng-checked="1" name="sex"/>Boy
+                    <input type="radio" ng-checked="0" name="sex"/>Girl
+                </li>
+                <li>
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" ng-selected="true">3</option>
+                    </select>
+                </li>
+                <li>
+                    <a ng-href="{{appUrl}}">app.js</a>
+                </li>
+                <li>
+                    <img ng-src="{{imgUrl}}"/>
+                </li>
+            </ul>
         </div>
 
         <div>
