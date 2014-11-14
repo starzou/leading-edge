@@ -1,5 +1,6 @@
 <ul>
     <li ng-repeat="user in users track by $index">
         <span ng-bind="user.id + ':' + user.name"></span>
+        <button ng-click="remove($index);">移除</button>
     </li>
 </ul>

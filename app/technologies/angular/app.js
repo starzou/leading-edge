@@ -170,7 +170,8 @@ App.directive('two', [function () {
 App.directive('userList', [function () {
     return {
         scope      : {
-            users: '='
+            users : '=',
+            remove: '&'
         },
         templateUrl: 'users.html'
     };
