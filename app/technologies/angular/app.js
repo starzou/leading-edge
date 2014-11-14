@@ -166,3 +166,12 @@ App.directive('two', [function () {
         template: '<div ng-bind="$id"></div>'
     };
 }]);
+
+App.directive('userList', [function () {
+    return {
+        scope      : {
+            users: '='
+        },
+        templateUrl: 'users.html'
+    };
+}]);
