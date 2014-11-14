@@ -147,3 +147,20 @@ App.directive('sayHello', [function () {
         template: '<div><h3 title="{{title}}">{{text}}</h3><label>title:</label><input type="text" ng-model="title" /></div>'
     };
 }]);
+
+App.directive('one', [function () {
+    return {
+        restrict: 'A',
+        replace : true,
+        template: '<div ng-bind="$id"></div>'
+    };
+}]);
+
+App.directive('two', [function () {
+    return {
+        restrict: 'A',
+        replace : true,
+        scope   : true,
+        template: '<div ng-bind="$id"></div>'
+    };
+}]);
