@@ -152,6 +152,7 @@ App.directive('one', [function () {
     return {
         restrict: 'A',
         replace : true,
+        priority: -1,
         template: '<div ng-bind="$id"></div>'
     };
 }]);
@@ -161,6 +162,7 @@ App.directive('two', [function () {
         restrict: 'A',
         replace : true,
         scope   : true,
+        terminal: true,
         template: '<div ng-bind="$id"></div>'
     };
 }]);
