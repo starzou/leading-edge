@@ -54,14 +54,6 @@
             </ul>
         </div>
 
-        <div>
-            <h2>自定义指令</h2>
-
-            <div say-hello title="title" text="{{date}}"></div>
-            <label>scope title:</label>
-            <input type="text" ng-model="title"/>
-        </div>
-
         <div ng-controller="internalDirectiveController">
             <h2>内置指令</h2>
             <ul>
@@ -86,7 +78,7 @@
                     <a ng-href="{{appUrl}}">app.js</a>
                 </li>
                 <li>
-                    <img ng-src="{{imgUrl}}"/>
+                    <button ng-click="loadImage();">加载图片</button><img ng-src="{{imgUrl}}"/>
                 </li>
             </ul>
             <ul>
@@ -110,6 +102,14 @@
                 </div>
                 <button type="submit">提交</button>
             </form>
+        </div>
+
+        <div>
+            <h2>自定义指令</h2>
+
+            <div say-hello title="title" text="{{date}}"></div>
+            <label>scope title:</label>
+            <input type="text" ng-model="title"/>
         </div>
 
     </div>
