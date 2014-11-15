@@ -16,16 +16,30 @@
 /**
  * 定义模块
  */
-var App = angular.module('App', []).run(['$rootScope', '$interval', function ($rootScope, $interval) {
+var App = angular.module('App', ['ngRoute']);
+
+/**
+ * App.config
+ */
+App.config([function () {
+    console.log('App.config');
+}]);
+
+/**
+ * App.run
+ */
+App.run(['$rootScope', '$interval', function ($rootScope, $interval) {
     $rootScope.app = {
-        name   : 'Angular Tutorial',
+        name: 'Angular Tutorial',
         version: '1.0.0 alpha',
-        date   : new Date()
+        date: new Date()
     };
 
     $interval(function () {
         $rootScope.app.date = new Date();
     }, 100, 20);
+
+    console.log('App.run');
 }]);
 
 /**
@@ -74,7 +88,7 @@ App.filter('capitalize', function () {
 App.directive('validateForm', function () {
     return {
         require: '?ngModel',
-        link   : function (scope, element, attrs, ngModel) {
+        link: function (scope, element, attrs, ngModel) {
             var form = scope[attrs.name];
             console.log('validateForm', arguments, form);
         }
@@ -83,24 +97,24 @@ App.directive('validateForm', function () {
 
 App.directive('validateField', function () {
     var VALIDATE = {
-        required : '必填！',
-        number   : "必须为数字！",
+        required: '必填！',
+        number: "必须为数字！",
         minlength: '太短！',
         maxlength: '太长！',
-        min      : '太小！',
-        max      : '太大！',
-        more     : '太多！',
-        email    : 'Email无效！',
-        username : '有效字符为汉字、字母、数字、下划线，以汉字或小写字母开头！',
-        minname  : '长度应大于5字节，一个汉字3字节！',
-        maxname  : '长度应小于15字节，一个汉字3字节！',
-        repasswd : '密码不一致！',
-        url      : 'URL无效！',
-        tag      : '标签错误，不能包含“,”、“，”和“、”'
+        min: '太小！',
+        max: '太大！',
+        more: '太多！',
+        email: 'Email无效！',
+        username: '有效字符为汉字、字母、数字、下划线，以汉字或小写字母开头！',
+        minname: '长度应大于5字节，一个汉字3字节！',
+        maxname: '长度应小于15字节，一个汉字3字节！',
+        repasswd: '密码不一致！',
+        url: 'URL无效！',
+        tag: '标签错误，不能包含“,”、“，”和“、”'
     };
     return {
         require: '?ngModel',
-        link   : function (scope, element, attrs, ngModel) {
+        link: function (scope, element, attrs, ngModel) {
             console.log('validateField', arguments);
 
             var validateFn = function () {
@@ -139,10 +153,10 @@ App.controller('internalDirectiveController', ['$scope', '$timeout', function ($
 App.directive('sayHello', [function () {
     return {
         restrict: 'A',
-        replace : true,
-        scope   : {
+        replace: true,
+        scope: {
             title: '=',
-            text : '@'
+            text: '@'
         },
         template: '<div><h3 title="{{title}}">{{text}}</h3><label>title:</label><input type="text" ng-model="title" /></div>'
     };
@@ -151,7 +165,7 @@ App.directive('sayHello', [function () {
 App.directive('one', [function () {
     return {
         restrict: 'A',
-        replace : true,
+        replace: true,
         priority: -1,
         template: '<div ng-bind="$id"></div>'
     };
@@ -160,8 +174,8 @@ App.directive('one', [function () {
 App.directive('two', [function () {
     return {
         restrict: 'A',
-        replace : true,
-        scope   : true,
+        replace: true,
+        scope: true,
         terminal: true,
         template: '<div ng-bind="$id"></div>'
     };
@@ -169,10 +183,19 @@ App.directive('two', [function () {
 
 App.directive('userList', [function () {
     return {
-        scope      : {
-            users : '=',
+        scope: {
+            users: '=',
             remove: '&'
         },
-        templateUrl: 'users.html'
+        templateUrl: 'users.html',
+        link: function (scope, element, attrs) {
+            console.log(arguments);
+            element.on('mouseover', function () {
+                element.css('backgroundColor', 'green');
+            });
+            element.on('mouseout', function () {
+                element.css('backgroundColor', 'white');
+            });
+        }
     };
 }]);
