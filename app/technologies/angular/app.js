@@ -21,7 +21,13 @@ var App = angular.module('App', ['ngRoute']);
 /**
  * App.config
  */
-App.config([function () {
+App.config(['$routeProvider', function ($routeProvider) {
+
+    $routeProvider
+        .when('/users', {templateUrl: 'users.html', controller: 'appCtrl'})
+        .when('/hi', {templateUrl: 'hiTemplate.html', controller: 'appCtrl'})
+        .otherwise({redirectTo: '/hi'});
+
     console.log('App.config');
 }]);
 

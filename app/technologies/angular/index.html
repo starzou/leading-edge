@@ -17,6 +17,11 @@
         .ng-valid {
             border: 2px solid green;
         }
+
+        body > div > div {
+            margin-bottom: 50px;
+            border: 3px dashed green;
+        }
     </style>
 </head>
 <body>
@@ -115,6 +120,18 @@
             <div two></div>
             <div one two></div>
             <div user-list users="users" remove="removeUser()"></div>
+        </div>
+
+        <div>
+            <h2>Angular route使用</h2>
+            <div>
+                <ul>
+                    <li><a href="#/users">view users</a></li>
+                    <li><a href="#/hi">view hi</a></li>
+                    <li><a href="#/other">view ohter</a></li>
+                </ul>
+                <div ng-view></div>
+            </div>
         </div>
 
     </div>
