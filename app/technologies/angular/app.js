@@ -27,7 +27,7 @@ App.config(['$routeProvider', function ($routeProvider) {
         .when('/users', {templateUrl: 'users.html', controller: 'appCtrl'})
         .when('/users/:name', {templateUrl: 'users.html', controller: 'appCtrl'})
         .when('/hi', {templateUrl: 'hiTemplate.html', controller: 'appCtrl'})
-        .otherwise({redirectTo: '/hi'});
+        .otherwise({redirectTo: '/users'});
 
     console.log('App.config');
 }]);
@@ -52,7 +52,7 @@ App.run(['$rootScope', '$interval', function ($rootScope, $interval) {
 /**
  * 注册controller
  */
-App.controller('appCtrl', ['$scope', '$filter', '$routeParams', function ($scope, $filter, $routeParams) {
+App.controller('appCtrl', ['$scope', '$filter', '$location', '$routeParams', function ($scope, $filter, $location, $routeParams) {
     var users = [
         {id: 1, name: 'star1'},
         {id: 2, name: 'star2'},
@@ -85,6 +85,8 @@ App.controller('appCtrl', ['$scope', '$filter', '$routeParams', function ($scope
     $scope.removeUser = function (index) {
         $scope.users.splice(index, 1);
     };
+
+    console.log($location);
 }]);
 
 /**
