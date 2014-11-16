@@ -233,11 +233,12 @@ App.directive('userList', [function () {
  * Service 使用案例
  */
 
-App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', 'MyService', 'MyService2', function ($scope, $timeout, AppService, GitHubService, MyService, MyService2) {
+App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', 'MyService', 'MyService2', 'MyService3', function ($scope, $timeout, AppService, GitHubService, MyService, MyService2, MyService3) {
     console.log('AppService : ', AppService);
     console.log('GitHubService : ', GitHubService);
     console.log('MyService : ', MyService);
     console.log('MyService2 : ', MyService2);
+    console.log('MyService3 : ', MyService3);
 
     $scope.userName = 'starzou';
     $scope.queryEvents = function (userName) {
@@ -309,11 +310,14 @@ App.factory('GitHubService', ['$http', function ($http) {
  * 可配置的服务
  */
 App.provider('MyService', {
-    $get: ['$http', function () {
+    $get: ['AppService', function () {
         return this;
     }]
 });
 
+/**
+ * 推荐
+ */
 App.provider('MyService2', function () {
     var obj = {
         date: Date.now()
@@ -323,10 +327,26 @@ App.provider('MyService2', function () {
         obj.name = name;
     };
 
-    this.$get = ['$http', function () {
+    this.$get = ['AppService', function () {
         return obj;
     }];
 });
+
+
+App.provider('MyService3', ['$httpProvider', function () {
+    var service = {
+        date: Date.now()
+    };
+
+    return {
+        $get: ['AppService', function () {
+            return service;
+        }],
+        setName: function (name) {
+            service.name = name;
+        }
+    };
+}]);
 
 App.config(['MyServiceProvider', function (MyServiceProvider) {
     MyServiceProvider.name = 'MyService';
@@ -334,4 +354,8 @@ App.config(['MyServiceProvider', function (MyServiceProvider) {
 
 App.config(['MyService2Provider', function (MyService2Provider) {
     MyService2Provider.setName('MyService2');
+}]);
+
+App.config(['MyService3Provider', function (MyService3Provider) {
+    MyService3Provider.setName('MyService3');
 }]);
