@@ -23,6 +23,9 @@ var App = angular.module('App', ['ngRoute']);
  */
 App.config(['$routeProvider', function ($routeProvider) {
 
+    /**
+     * 路由服务配置
+     */
     $routeProvider
         .when('/users', {templateUrl: 'users.html', controller: 'appCtrl'})
         .when('/users/:name', {templateUrl: 'users.html', controller: 'appCtrl'})
@@ -46,13 +49,20 @@ App.run(['$rootScope', '$interval', function ($rootScope, $interval) {
         $rootScope.app.date = new Date();
     }, 100, 20);
 
+    /**
+     * 监听路由服务改变, 例:可以统计用户打开页面的情况
+     */
+    $rootScope.$on('$routeChangeStart', function (event, next, current) {
+        console.log('$routeChangeStart : ', arguments);
+    });
+
     console.log('App.run');
 }]);
 
 /**
  * 注册controller
  */
-App.controller('appCtrl', ['$scope', '$filter', '$location', '$routeParams', function ($scope, $filter, $location, $routeParams) {
+App.controller('appCtrl', ['$scope', '$filter', '$location', '$route', '$routeParams', function ($scope, $filter, $location, $route, $routeParams) {
     var users = $scope.users || [
             {id: 1, name: 'star1'},
             {id: 2, name: 'star2'},
@@ -90,7 +100,7 @@ App.controller('appCtrl', ['$scope', '$filter', '$location', '$routeParams', fun
         $location.path(path);
     };
 
-    console.log($location);
+    console.log($location, $route);
 }]);
 
 /**
