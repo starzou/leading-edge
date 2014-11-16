@@ -232,13 +232,14 @@ App.directive('userList', [function () {
 /**
  * Service 使用案例
  */
-
-App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', 'MyService', 'MyService2', 'MyService3', function ($scope, $timeout, AppService, GitHubService, MyService, MyService2, MyService3) {
+App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', 'MyService', 'MyService2', 'MyService3', 'MyService5', 'MyService6', function ($scope, $timeout, AppService, GitHubService, MyService, MyService2, MyService3, MyService5, MyService6) {
     console.log('AppService : ', AppService);
     console.log('GitHubService : ', GitHubService);
     console.log('MyService : ', MyService);
     console.log('MyService2 : ', MyService2);
     console.log('MyService3 : ', MyService3);
+    console.log('MyService5 : ', MyService5);
+    console.log('MyService6 : ', MyService6);
 
     $scope.userName = 'starzou';
     $scope.queryEvents = function (userName) {
@@ -266,6 +267,9 @@ App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHub
     }
 }]);
 
+/**
+ * factory
+ */
 App.factory('AppService', [function () {
     var version = {
         full: "1.0.0",
@@ -307,7 +311,7 @@ App.factory('GitHubService', ['$http', function ($http) {
 }]);
 
 /**
- * 可配置的服务
+ * provider, 可配置的服务
  */
 App.provider('MyService', {
     $get: ['AppService', function () {
@@ -359,3 +363,13 @@ App.config(['MyService2Provider', function (MyService2Provider) {
 App.config(['MyService3Provider', function (MyService3Provider) {
     MyService3Provider.setName('MyService3');
 }]);
+
+/**
+ * constant
+ */
+App.constant('MyService5', {date: Date.now()});
+
+/**
+ * value
+ */
+App.value('MyService6', {date: Date.now()});
