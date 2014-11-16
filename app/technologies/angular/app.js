@@ -232,7 +232,7 @@ App.directive('userList', [function () {
 /**
  * Service 使用案例
  */
-App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', 'MyService', 'MyService2', 'MyService3', 'MyService5', 'MyService6', function ($scope, $timeout, AppService, GitHubService, MyService, MyService2, MyService3, MyService5, MyService6) {
+App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', 'MyService', 'MyService2', 'MyService3', 'MyService5', 'MyService6', 'MyService7', function ($scope, $timeout, AppService, GitHubService, MyService, MyService2, MyService3, MyService5, MyService6, MyService7) {
     console.log('AppService : ', AppService);
     console.log('GitHubService : ', GitHubService);
     console.log('MyService : ', MyService);
@@ -240,6 +240,7 @@ App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHub
     console.log('MyService3 : ', MyService3);
     console.log('MyService5 : ', MyService5);
     console.log('MyService6 : ', MyService6);
+    console.log('MyService7 : ', MyService7);
 
     $scope.userName = 'starzou';
     $scope.queryEvents = function (userName) {
@@ -268,7 +269,7 @@ App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHub
 }]);
 
 /**
- * factory
+ * factory : 返回对象作为一个服务
  */
 App.factory('AppService', [function () {
     var version = {
@@ -311,7 +312,9 @@ App.factory('GitHubService', ['$http', function ($http) {
 }]);
 
 /**
- * provider, 可配置的服务
+ * provider, 可配置的服务.
+ * provider : 为参数
+ * service实例 : provider.$get 方法返回的对象
  */
 App.provider('MyService', {
     $get: ['AppService', function () {
@@ -320,7 +323,9 @@ App.provider('MyService', {
 });
 
 /**
- * 推荐
+ * 推荐.
+ * provider : 为参数 函数的实例化对象
+ * service实例 : provider.$get 方法返回的对象
  */
 App.provider('MyService2', function () {
     var obj = {
@@ -336,7 +341,10 @@ App.provider('MyService2', function () {
     }];
 });
 
-
+/**
+ * provider : 为参数 函数的返回值
+ * service实例 : provider.$get 方法返回的对象
+ */
 App.provider('MyService3', ['$httpProvider', function () {
     var service = {
         date: Date.now()
@@ -366,10 +374,21 @@ App.config(['MyService3Provider', function (MyService3Provider) {
 
 /**
  * constant
+ * service实例 : 为参数
  */
 App.constant('MyService5', {date: Date.now()});
 
 /**
  * value
+ * service实例 : 为参数
  */
 App.value('MyService6', {date: Date.now()});
+
+/**
+ * service
+ * service实例 : 为参数 函数的实例化对象
+ */
+App.service('MyService7', ['AppService', function (AppService) {
+    this.AppService = AppService;
+    this.name = 'MyService7';
+}]);
