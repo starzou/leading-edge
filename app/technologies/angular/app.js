@@ -19,7 +19,8 @@
 var App = angular.module('App', ['ngRoute']);
 
 /**
- * App.config
+ * App.config 配置块
+ * 配置服务
  */
 App.config(['$routeProvider', function ($routeProvider) {
 
@@ -36,7 +37,8 @@ App.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 /**
- * App.run
+ * App.run 运行块
+ * 初始化设置
  */
 App.run(['$rootScope', '$interval', function ($rootScope, $interval) {
     $rootScope.app = {
@@ -114,6 +116,9 @@ App.filter('capitalize', function () {
     };
 });
 
+/**
+ * 指令注册
+ */
 App.directive('validateForm', function () {
     return {
         require: '?ngModel',
