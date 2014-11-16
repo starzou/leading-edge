@@ -53,11 +53,11 @@ App.run(['$rootScope', '$interval', function ($rootScope, $interval) {
  * 注册controller
  */
 App.controller('appCtrl', ['$scope', '$filter', '$location', '$routeParams', function ($scope, $filter, $location, $routeParams) {
-    var users = [
-        {id: 1, name: 'star1'},
-        {id: 2, name: 'star2'},
-        {id: 3, name: 'star3'}
-    ];
+    var users = $scope.users || [
+            {id: 1, name: 'star1'},
+            {id: 2, name: 'star2'},
+            {id: 3, name: 'star3'}
+        ];
 
     $scope.word = 'hello ';
 
@@ -84,6 +84,10 @@ App.controller('appCtrl', ['$scope', '$filter', '$location', '$routeParams', fun
 
     $scope.removeUser = function (index) {
         $scope.users.splice(index, 1);
+    };
+
+    $scope.routeTo = function (path) {
+        $location.path(path);
     };
 
     console.log($location);
