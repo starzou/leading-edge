@@ -233,7 +233,7 @@ App.directive('userList', [function () {
  * Service 使用案例
  */
 
-App.controller('ServiceController', ['$scope', 'AppService', 'GitHubService', function ($scope, AppService, GitHubService) {
+App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', function ($scope, $timeout, AppService, GitHubService) {
     console.log('AppService : ', AppService);
     console.log('GitHubService : ', GitHubService);
 
@@ -243,6 +243,22 @@ App.controller('ServiceController', ['$scope', 'AppService', 'GitHubService', fu
             $scope.events = response.data;
         });
     };
+
+    var timeout, pending = false;
+    $scope.$watch('userName', function (newUserName) {
+        if (newUserName) {
+            if (!timeout && !pending) {
+                pending = true;
+                timeout = $timeout(function () {
+                    GitHubService.events(newUserName).success(function (response) {
+                        $scope.events = response.data;
+                    });
+                    pending = false;
+                    timeout = null;
+                }, 500);
+            }
+        }
+    })
 }]);
 
 App.factory('AppService', [function () {
