@@ -228,3 +228,7 @@ App.directive('userList', [function () {
         }
     };
 }]);
+
+App.controller('ServiceController', ['$scope', function ($scope) {
+    
+}]);
