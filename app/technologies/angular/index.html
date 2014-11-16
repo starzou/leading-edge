@@ -30,7 +30,7 @@
 </head>
 <body>
     <h1 ng-bind="app.name" style="color: red;display: inline-block;"></h1><span ng-bind="app.date | date:'yyyy-MM-dd hh:mm:ss.sss'"></span>
-    <div ng-controller="appCtrl" ng-cloak>
+    <div ng-controller="AppCtrl" ng-cloak>
         <div>
             <h2>过滤器使用</h2>
 
@@ -63,7 +63,7 @@
             </ul>
         </div>
 
-        <div ng-controller="internalDirectiveController">
+        <div ng-controller="InternalDirectiveController">
             <h2>内置指令</h2>
             <ul>
                 <li>
@@ -92,7 +92,7 @@
             </ul>
             <ul>
                 <li>
-                    <div ng-include="tplUrl" ng-controller="appCtrl"></div>
+                    <div ng-include="tplUrl" ng-controller="AppCtrl"></div>
                 </li>
             </ul>
         </div>

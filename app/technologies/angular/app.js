@@ -27,9 +27,9 @@ App.config(['$routeProvider', function ($routeProvider) {
      * 路由服务配置
      */
     $routeProvider
-        .when('/users', {templateUrl: 'users.html', controller: 'appCtrl'})
-        .when('/users/:name', {templateUrl: 'users.html', controller: 'appCtrl'})
-        .when('/hi', {templateUrl: 'hiTemplate.html', controller: 'appCtrl'})
+        .when('/users', {templateUrl: 'users.html', controller: 'AppCtrl'})
+        .when('/users/:name', {templateUrl: 'users.html', controller: 'AppCtrl'})
+        .when('/hi', {templateUrl: 'hiTemplate.html', controller: 'AppCtrl'})
         .otherwise({redirectTo: '/users'});
 
     console.log('App.config');
@@ -62,7 +62,7 @@ App.run(['$rootScope', '$interval', function ($rootScope, $interval) {
 /**
  * 注册controller
  */
-App.controller('appCtrl', ['$scope', '$filter', '$location', '$route', '$routeParams', function ($scope, $filter, $location, $route, $routeParams) {
+App.controller('AppCtrl', ['$scope', '$filter', '$location', '$route', '$routeParams', function ($scope, $filter, $location, $route, $routeParams) {
     var users = $scope.users || [
             {id: 1, name: 'star1'},
             {id: 2, name: 'star2'},
@@ -165,7 +165,7 @@ App.directive('validateField', function () {
 /**
  * 内部指令 测试控制器
  */
-App.controller('internalDirectiveController', ['$scope', '$timeout', function ($scope, $timeout) {
+App.controller('InternalDirectiveController', ['$scope', '$timeout', function ($scope, $timeout) {
     $scope.appUrl = 'app.js';
 
     $scope.tplUrl = 'hiTemplate.html';
