@@ -233,9 +233,11 @@ App.directive('userList', [function () {
  * Service 使用案例
  */
 
-App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', function ($scope, $timeout, AppService, GitHubService) {
+App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHubService', 'MyService', 'MyService2', function ($scope, $timeout, AppService, GitHubService, MyService, MyService2) {
     console.log('AppService : ', AppService);
     console.log('GitHubService : ', GitHubService);
+    console.log('MyService : ', MyService);
+    console.log('MyService2 : ', MyService2);
 
     $scope.userName = 'starzou';
     $scope.queryEvents = function (userName) {
@@ -244,21 +246,23 @@ App.controller('ServiceController', ['$scope', '$timeout', 'AppService', 'GitHub
         });
     };
 
-    var timeout, pending = false;
-    $scope.$watch('userName', function (newUserName) {
-        if (newUserName) {
-            if (!timeout && !pending) {
-                pending = true;
-                timeout = $timeout(function () {
-                    GitHubService.events(newUserName).success(function (response) {
-                        $scope.events = response.data;
-                    });
-                    pending = false;
-                    timeout = null;
-                }, 500);
+    var timeout, pending = false, enable = false;
+    if (enable) {
+        $scope.$watch('userName', function (newUserName) {
+            if (newUserName) {
+                if (!timeout && !pending) {
+                    pending = true;
+                    timeout = $timeout(function () {
+                        GitHubService.events(newUserName).success(function (response) {
+                            $scope.events = response.data;
+                        });
+                        pending = false;
+                        timeout = null;
+                    }, 500);
+                }
             }
-        }
-    })
+        });
+    }
 }]);
 
 App.factory('AppService', [function () {
@@ -299,4 +303,35 @@ App.factory('GitHubService', ['$http', function ($http) {
             return Resources.repos.method(userName);
         }
     };
+}]);
+
+/**
+ * 可配置的服务
+ */
+App.provider('MyService', {
+    $get: ['$http', function () {
+        return this;
+    }]
+});
+
+App.provider('MyService2', function () {
+    var obj = {
+        date: Date.now()
+    };
+
+    this.setName = function (name) {
+        obj.name = name;
+    };
+
+    this.$get = ['$http', function () {
+        return obj;
+    }];
+});
+
+App.config(['MyServiceProvider', function (MyServiceProvider) {
+    MyServiceProvider.name = 'MyService';
+}]);
+
+App.config(['MyService2Provider', function (MyService2Provider) {
+    MyService2Provider.setName('MyService2');
 }]);
