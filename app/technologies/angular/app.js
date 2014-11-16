@@ -25,6 +25,7 @@ App.config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider
         .when('/users', {templateUrl: 'users.html', controller: 'appCtrl'})
+        .when('/users/:name', {templateUrl: 'users.html', controller: 'appCtrl'})
         .when('/hi', {templateUrl: 'hiTemplate.html', controller: 'appCtrl'})
         .otherwise({redirectTo: '/hi'});
 
@@ -51,7 +52,12 @@ App.run(['$rootScope', '$interval', function ($rootScope, $interval) {
 /**
  * 注册controller
  */
-App.controller('appCtrl', ['$scope', '$filter', function ($scope, $filter) {
+App.controller('appCtrl', ['$scope', '$filter', '$routeParams', function ($scope, $filter, $routeParams) {
+    var users = [
+        {id: 1, name: 'star1'},
+        {id: 2, name: 'star2'},
+        {id: 3, name: 'star3'}
+    ];
 
     $scope.word = 'hello ';
 
@@ -64,11 +70,12 @@ App.controller('appCtrl', ['$scope', '$filter', function ($scope, $filter) {
      */
     $scope.name = $filter('lowercase')('StarZou');
 
-    $scope.users = [
-        {id: 1, name: 'star1'},
-        {id: 2, name: 'star2'},
-        {id: 3, name: 'star3'}
-    ];
+
+    if (Object.keys($routeParams).length) {
+        $scope.users = $filter('filter')(users, $routeParams);
+    } else {
+        $scope.users = users;
+    }
 
     $scope.addUser = function (name) {
         $scope.users.push({id: Date.now(), name: name});
