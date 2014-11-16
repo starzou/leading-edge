@@ -49,7 +49,7 @@ App.run(['$rootScope', '$interval', function ($rootScope, $interval) {
 
     $interval(function () {
         $rootScope.app.date = new Date();
-    }, 100, 20);
+    }, 200);
 
     /**
      * 监听路由服务改变, 例:可以统计用户打开页面的情况
@@ -382,6 +382,10 @@ App.config(['MyService3Provider', function (MyService3Provider) {
  * service实例 : 为参数
  */
 App.constant('MyService5', {date: Date.now()});
+
+App.config(['MyService5', function (MyService5) {
+    MyService5.name = 'MyService5';
+}]);
 
 /**
  * value
