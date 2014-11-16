@@ -229,6 +229,58 @@ App.directive('userList', [function () {
     };
 }]);
 
-App.controller('ServiceController', ['$scope', function ($scope) {
-    
+/**
+ * Service 使用案例
+ */
+
+App.controller('ServiceController', ['$scope', 'AppService', 'GitHubService', function ($scope, AppService, GitHubService) {
+    console.log('AppService : ', AppService);
+    console.log('GitHubService : ', GitHubService);
+
+    $scope.userName = 'starzou';
+    $scope.queryEvents = function (userName) {
+        GitHubService.events(userName).success(function (response) {
+            $scope.events = response.data;
+        });
+    };
+}]);
+
+App.factory('AppService', [function () {
+    var version = {
+        full: "1.0.0",
+        major: 1,
+        dot: 0,
+        minor: 0
+    };
+    return {
+        version: version,
+        date: Date.now()
+    };
+}]);
+
+App.factory('GitHubService', ['$http', function ($http) {
+    var Resources = {
+        events: {
+            url: 'https://api.github.com/users/:user/events?callback=JSON_CALLBACK',
+            method: function (userName) {
+                return $http({method: 'JSONP', url: this.url.replace(':user', userName)});
+            }
+        },
+        repos: {
+            url: 'https://api.github.com/users/:user/repos?callback=JSON_CALLBACK',
+            method: function (userName) {
+                return $http({method: 'JSONP', url: this.url.replace(':user', userName)});
+            }
+        }
+    };
+
+    return {
+        events: function (userName) {
+            return Resources.events.method(userName);
+        },
+
+        repos: function (userName) {
+            return Resources.repos.method(userName);
+        }
+    };
 }]);

@@ -153,7 +153,14 @@
         <div ng-controller="ServiceController">
             <h2>Service 服务 使用</h2>
             <div>
-
+                <label>GitHub UserName : </label>
+                <input type="text" ng-model="userName"/>
+                <button ng-click="queryEvents(userName)">查询Events</button>
+                <ol>
+                    <li ng-repeat="event in events">
+                        <p>{{ event | json}}</p>
+                    </li>
+                </ol>
             </div>
         </div>
 
