@@ -407,8 +407,8 @@ App.service('MyService7', ['AppService', function (AppService) {
  */
 App.controller('HttpController', ['$scope', '$http', function ($scope, $http) {
     $scope.httpGet = function () {
-        $http.get('/rest/', {params: {name: 'star'}}).then(function () {
-            console.log(arguments);
+        $http.get('/rest/users', {params: $scope.param}).success(function (data) {
+            $scope.data = data;
         });
     }
 }]);
