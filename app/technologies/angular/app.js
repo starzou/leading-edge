@@ -401,3 +401,14 @@ App.service('MyService7', ['AppService', function (AppService) {
     this.AppService = AppService;
     this.name = 'MyService7';
 }]);
+
+/**
+ * HttpController
+ */
+App.controller('HttpController', ['$scope', '$http', function ($scope, $http) {
+    $scope.httpGet = function () {
+        $http.get('/rest/', {params: {name: 'star'}}).then(function () {
+            console.log(arguments);
+        });
+    }
+}]);
