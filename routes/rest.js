@@ -24,7 +24,7 @@ router.get('/', function (req, res) {
 });
 
 /**
- * users
+ * get users
  */
 router.get('/users', function (req, res) {
     query = req.query;
@@ -43,6 +43,14 @@ router.get('/users', function (req, res) {
     } else {
         res.send(data);
     }
+});
+
+/**
+ * post users
+ */
+router.post('/users', function (req, res) {
+    data.push(req.body);
+    res.send(data);
 });
 
 module.exports = router;

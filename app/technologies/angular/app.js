@@ -410,5 +410,11 @@ App.controller('HttpController', ['$scope', '$http', function ($scope, $http) {
         $http.get('/rest/users', {params: $scope.param}).success(function (data) {
             $scope.data = data;
         });
-    }
+    };
+
+    $scope.httpPost = function () {
+        $http.post('/rest/users', $scope.param).success(function (data) {
+            $scope.data = data;
+        });
+    };
 }]);
