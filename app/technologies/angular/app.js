@@ -418,3 +418,52 @@ App.controller('HttpController', ['$scope', '$http', function ($scope, $http) {
         });
     };
 }]);
+
+
+/**
+ * 应用配置服务
+ */
+App.constant('appConfig', {
+    headers: {
+        common: {
+            token: 'token123456'
+        }
+    }
+});
+
+
+/**
+ * 请求配置示例
+ */
+App.config(['$httpProvider', '$cacheFactoryProvider', 'appConfig', function ($httpProvider, $cacheFactoryProvider, appConfig) {
+    //var cacheFactory = $cacheFactoryProvider.$get();
+    //$httpProvider.defaults.cache = cacheFactory('cacheRequests', {capacity: 5});
+
+    $httpProvider.interceptors.push('appInterceptor'); // 添加拦截器
+
+    angular.extend($httpProvider.defaults.headers.common, appConfig.headers.common); // 设置公共请求头, 比如可以设置Token, 实现校验
+}]);
+
+/**
+ * http 拦截器
+ */
+App.factory('appInterceptor', ['$q', function ($q) {
+    return {
+        'request': function (config) {
+            console.log('request...', config);
+            return config;
+        },
+
+        'requestError': function (rejection) {
+            return $q.reject(rejection);
+        },
+
+        'response': function (response) {
+            console.log('response...', response);
+            return response;
+        },
+        'responseError': function (rejection) {
+            return $q.reject(rejection);
+        }
+    };
+}]);
