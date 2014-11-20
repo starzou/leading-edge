@@ -35,7 +35,7 @@ router.get('/users', function (req, res) {
          */
         for (var i = 0; i < data.length; i++) {
             obj = data[i];
-            if (obj.name.indexOf(query.name) > -1) {
+            if (obj.name && obj.name.indexOf(query.name) > -1) {
                 tempData.push(obj);
             }
         }

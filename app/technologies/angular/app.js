@@ -422,7 +422,7 @@ App.controller('HttpController', ['$scope', '$http', '$resource', 'appContext', 
         //    $scope.data = data;
         //});
 
-        $scope.data = User.query();
+        $scope.data = User.query($scope.param);
     };
 
     $scope.httpPost = function () {
@@ -431,6 +431,7 @@ App.controller('HttpController', ['$scope', '$http', '$resource', 'appContext', 
         //});
 
         User.save($scope.param, function () {
+            $scope.param = {};
             $scope.httpGet();
         });
     };
