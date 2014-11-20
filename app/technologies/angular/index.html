@@ -170,12 +170,10 @@
                 Name : <input type="text" ng-model="param.name"/>
                 Age : <input type="text" ng-model="param.age"/>
                 <br>
-                <label>$http Method : </label>
+                <label>$http | $resource Method : </label>
                 <button ng-click="httpGet();">GET</button>
                 <button ng-click="httpPost();">POST</button>
                 <button ng-click="viewStatus();">查看状态</button>
-                <br>
-                <label>$resource Method : </label>
 
                 <div>
                     {{data | json}}

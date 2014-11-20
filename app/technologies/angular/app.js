@@ -406,7 +406,15 @@ App.service('MyService7', ['AppService', function (AppService) {
  * HttpController
  */
 App.controller('HttpController', ['$scope', '$http', '$resource', 'appContext', function ($scope, $http, $resource, appContext) {
-    var User = $resource('/rest/users'); // User资源
+    /**
+     * User资源
+     */
+    var User = $resource('/rest/users', {}, {
+        queryUsers: {
+            method: 'GET',
+            isArray: true
+        }
+    });
 
 
     $scope.httpGet = function () {
