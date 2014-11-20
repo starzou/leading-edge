@@ -181,10 +181,21 @@
             </div>
         </div>
 
+        <div ng-controller="RestController">
+            <h2>Restangular使用</h2>
+            <div>
+                <div>
+                    {{data | json}}
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.js"></script>
+    <script src="/bower_components/restangular/dist/restangular.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

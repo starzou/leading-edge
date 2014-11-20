@@ -16,7 +16,7 @@
 /**
  * 定义模块
  */
-var App = angular.module('App', ['ngRoute', 'ngResource']);
+var App = angular.module('App', ['ngRoute', 'ngResource', 'restangular']);
 
 /**
  * App.config 配置块
@@ -499,4 +499,10 @@ App.factory('appInterceptor', ['$q', 'appContext', function ($q, appContext) {
             return $q.reject(rejection);
         }
     };
+}]);
+
+App.controller('RestController', ['$scope', 'Restangular', function ($scope, Restangular) {
+    var Users = Restangular.all('rest/users');
+    console.log(Users);
+    $scope.data = Users.getList();
 }]);
