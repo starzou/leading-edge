@@ -409,7 +409,7 @@ App.controller('HttpController', ['$scope', '$http', '$resource', 'appContext', 
     /**
      * User资源
      */
-    var User = $resource('/rest/users', {}, {
+    var User = $resource('/rest/users', null, {
         queryUsers: {
             method: 'GET',
             isArray: true
