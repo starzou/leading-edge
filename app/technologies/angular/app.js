@@ -406,22 +406,29 @@ App.service('MyService7', ['AppService', function (AppService) {
  * HttpController
  */
 App.controller('HttpController', ['$scope', '$http', '$resource', 'appContext', function ($scope, $http, $resource, appContext) {
+    var User = $resource('/rest/users'); // User资源
+
+
     $scope.httpGet = function () {
-        $http.get('/rest/users', {params: $scope.param}).success(function (data) {
-            $scope.data = data;
-        });
+        //$http.get('/rest/users', {params: $scope.param}).success(function (data) {
+        //    $scope.data = data;
+        //});
+
+        $scope.data = User.query();
     };
 
     $scope.httpPost = function () {
-        $http.post('/rest/users', $scope.param).success(function (data) {
-            $scope.data = data;
+        //$http.post('/rest/users', $scope.param).success(function (data) {
+        //    $scope.httpGet();
+        //});
+
+        User.save($scope.param, function () {
+            $scope.httpGet();
         });
     };
 
-    var User = $resource('/rest/users');
-
     $scope.viewStatus = function () {
-        console.log(appContext, User);
+        console.log(appContext);
     };
 }]);
 

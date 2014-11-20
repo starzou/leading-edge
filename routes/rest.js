@@ -50,7 +50,7 @@ router.get('/users', function (req, res) {
  */
 router.post('/users', function (req, res) {
     data.push(req.body);
-    res.send(data);
+    res.send({status: 'OK'});
 });
 
 module.exports = router;
