@@ -16,7 +16,7 @@
 /**
  * 定义模块
  */
-var App = angular.module('App', ['ngRoute']);
+var App = angular.module('App', ['ngRoute', 'ngResource']);
 
 /**
  * App.config 配置块
@@ -405,7 +405,7 @@ App.service('MyService7', ['AppService', function (AppService) {
 /**
  * HttpController
  */
-App.controller('HttpController', ['$scope', '$http', 'appContext', function ($scope, $http, appContext) {
+App.controller('HttpController', ['$scope', '$http', '$resource', 'appContext', function ($scope, $http, $resource, appContext) {
     $scope.httpGet = function () {
         $http.get('/rest/users', {params: $scope.param}).success(function (data) {
             $scope.data = data;
@@ -418,8 +418,10 @@ App.controller('HttpController', ['$scope', '$http', 'appContext', function ($sc
         });
     };
 
+    var User = $resource('/rest/users');
+
     $scope.viewStatus = function () {
-        console.log(appContext);
+        console.log(appContext, User);
     };
 }]);
 

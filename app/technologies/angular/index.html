@@ -165,15 +165,18 @@
         </div>
 
         <div ng-controller="HttpController">
-            <h2>$http 使用</h2>
+            <h2>$http & $resource使用</h2>
             <div>
                 Name : <input type="text" ng-model="param.name"/>
                 Age : <input type="text" ng-model="param.age"/>
                 <br>
-                <label>HTTP Method : </label>
+                <label>$http Method : </label>
                 <button ng-click="httpGet();">GET</button>
                 <button ng-click="httpPost();">POST</button>
                 <button ng-click="viewStatus();">查看状态</button>
+                <br>
+                <label>$resource Method : </label>
+
                 <div>
                     {{data | json}}
                 </div>
@@ -183,6 +186,7 @@
     </div>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
