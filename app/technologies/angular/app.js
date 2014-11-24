@@ -506,3 +506,36 @@ App.controller('RestController', ['$scope', 'Restangular', function ($scope, Res
     console.log(Users);
     $scope.data = Users.getList();
 }]);
+
+App.controller('qController', ['$scope', '$q', '$timeout', function ($scope, $q, $timeout) {
+
+    $scope.log = function (data) {
+        console.log(data);
+    };
+
+    $scope.asyncRequest = function (options) {
+        var deferred = $q.defer();
+
+        console.log('请求之前...', options);
+
+        $timeout(function () {
+            deferred.notify('正在执行 ' + options.name + ' 请求...');
+
+            if (options.status) {
+                deferred.resolve(options.name + ' 请求完毕...');
+            } else {
+                deferred.reject(options.name + ' 请求拒绝...');
+            }
+        }, 2000);
+
+        return deferred.promise
+
+    };
+
+    $scope.req = function () {
+        var promise = $scope.asyncRequest({name: '登录', status: false});
+        promise.then($scope.log, $scope.log, $scope.log);
+    };
+
+
+}]);
