@@ -16,12 +16,35 @@ App.controller('AppCtrl', ['$scope', function ($scope) {
 App.directive('sayHello', [function () {
     return {
         restrict: 'A',
-        replace : true,
-        scope   : true,
+        replace: true,
+        scope: true,
         template: '<div><h1 ng-bind="word"></h1></div>',
-        link    : function postLink(scope, element, attrs) {
+        link: function postLink(scope, element, attrs) {
             scope.word = scope.$eval(attrs.sayHello);
 //            console.log(arguments);
         }
     };
 }]);
+
+//var showButton = document.getElementById('showButton');
+//showButton.addEventListener('click', function () {
+//    console.log(arguments);
+//});
+
+
+function a() {
+    var name = 'a';
+    b();
+}
+
+function b() {
+    var name = 'b';
+    c();
+}
+
+function c() {
+    var name = 'c';
+    console.log(Date.now());
+}
+
+a();
