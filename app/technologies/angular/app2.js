@@ -9,4 +9,19 @@ var App = angular.module('App', []);
 
 App.controller('AppCtrl', ['$scope', function ($scope) {
     $scope.title = 'Angular 实践2';
+
+    $scope.words = 'hello world!';
+}]);
+
+App.directive('sayHello', [function () {
+    return {
+        restrict: 'A',
+        replace : true,
+        scope   : true,
+        template: '<div><h1 ng-bind="word"></h1></div>',
+        link    : function postLink(scope, element, attrs) {
+            scope.word = scope.$eval(attrs.sayHello);
+//            console.log(arguments);
+        }
+    };
 }]);
