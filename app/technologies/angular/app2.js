@@ -21,12 +21,6 @@ App.directive('sayHello', [function () {
         template: '<div><h1 ng-bind="word"></h1></div>',
         link: function postLink(scope, element, attrs) {
             scope.word = scope.$eval(attrs.sayHello);
-//            console.log(arguments);
         }
     };
 }]);
-
-//var showButton = document.getElementById('showButton');
-//showButton.addEventListener('click', function () {
-//    console.log(arguments);
-//});
