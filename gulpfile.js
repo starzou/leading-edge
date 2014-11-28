@@ -38,7 +38,7 @@ gulp.task('minifyJs', function () {
  * 压缩并合并js
  */
 gulp.task('js', function () {
-    gulp.src('app/technologies/**/*.js')
+    gulp.src('app/technologies/test/**/*.js')
         .pipe(uglify())
         .pipe(concat('app.js'))
         .pipe(gulp.dest('build'));
