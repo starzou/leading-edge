@@ -6,13 +6,13 @@
  **/
 
 var gulp = require('gulp'),
-    uglify = require('gulp-gulp-uglify');
+    uglify = require('gulp-uglify');
 
 /**
  * 压缩js
  */
-gulp.task('minify', function () {
-    gulp.src('js/app/**/*.js')
+gulp.task('minifyJs', function () {
+    gulp.src('js/app/technologies/**/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('build'));
 });
@@ -21,4 +21,4 @@ gulp.task('minify', function () {
  * 默认任务 :
  * 使用 命令行: gulp运行
  */
-gulp.task('default', ['minify']);
+gulp.task('default', ['minifyJs']);
