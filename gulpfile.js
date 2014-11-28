@@ -12,7 +12,7 @@ var gulp = require('gulp'),
  * 压缩js
  */
 gulp.task('minifyJs', function () {
-    gulp.src('js/app/technologies/**/*.js')
+    gulp.src('app/technologies/**/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('build'));
 });
