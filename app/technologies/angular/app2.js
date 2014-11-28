@@ -16,10 +16,10 @@ App.controller('AppCtrl', ['$scope', function ($scope) {
 App.directive('sayHello', [function () {
     return {
         restrict: 'A',
-        replace : true,
-        scope   : true,
+        replace: true,
+        scope: true,
         template: '<div><h1 ng-bind="word"></h1></div>',
-        link    : function postLink(scope, element, attrs) {
+        link: function postLink(scope, element, attrs) {
             scope.word = scope.$eval(attrs.sayHello);
 //            console.log(arguments);
         }
@@ -30,24 +30,3 @@ App.directive('sayHello', [function () {
 //showButton.addEventListener('click', function () {
 //    console.log(arguments);
 //});
-
-function a() {
-    var name = 'a';
-    b(name);
-
-    this['<return>'] = {name: name};
-}
-
-function b() {
-    var name = 'b';
-    console.log(arguments);
-    c();
-}
-
-function c() {
-    var name = 'c';
-    console.log(Date.now());
-}
-
-var obj = new a();
-console.log(obj);
