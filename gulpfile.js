@@ -6,7 +6,16 @@
  **/
 
 var gulp = require('gulp'),
-    uglify = require('gulp-uglify');
+    del = require('del'),
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat');
+
+/**
+ * 清空目录
+ */
+gulp.task('clean', function (cb) {
+    del('build', cb);
+});
 
 /**
  * 压缩js
@@ -14,6 +23,16 @@ var gulp = require('gulp'),
 gulp.task('minifyJs', function () {
     gulp.src('app/technologies/**/*.js')
         .pipe(uglify())
+        .pipe(gulp.dest('build'));
+});
+
+/**
+ * 压缩并合并js
+ */
+gulp.task('js', function () {
+    gulp.src('app/technologies/**/*.js')
+        .pipe(uglify())
+        .pipe(concat('app.js'))
         .pipe(gulp.dest('build'));
 });
 
