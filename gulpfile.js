@@ -18,6 +18,14 @@ gulp.task('clean', function (cb) {
 });
 
 /**
+ * 复制
+ */
+gulp.task('copy', function () {
+    gulp.src('app/**/*')
+        .pipe(gulp.dest('build'));
+});
+
+/**
  * 压缩js
  */
 gulp.task('minifyJs', function () {
@@ -40,4 +48,6 @@ gulp.task('js', function () {
  * 默认任务 :
  * 使用 命令行: gulp运行
  */
-gulp.task('default', ['minifyJs']);
+gulp.task('default', function () {
+    console.log('run default...');
+});
