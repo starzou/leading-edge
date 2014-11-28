@@ -33,3 +33,16 @@ function c() {
 
 var obj = new a();
 console.log(obj);
+
+
+(function t() {
+    setTimeout(function createA() {
+        new a();
+    }, 2000);
+})();
+
+(function t2() {
+    setTimeout(function createA() {
+        new a();
+    }, 1980);
+})();
