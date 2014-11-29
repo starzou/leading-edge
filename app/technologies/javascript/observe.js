@@ -27,4 +27,4 @@
         obj.name = 'StarZou';
         obj.index = ++i;
     });
-})(window, document);
+}).call({}, window, document);
