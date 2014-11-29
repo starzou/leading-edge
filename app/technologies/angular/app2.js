@@ -16,10 +16,10 @@ App.controller('AppCtrl', ['$scope', function ($scope) {
 App.directive('sayHello', [function () {
     return {
         restrict: 'A',
-        replace: true,
-        scope: true,
+        replace : true,
+        scope   : true,
         template: '<div><h1 ng-bind="word"></h1></div>',
-        link: function postLink(scope, element, attrs) {
+        link    : function postLink(scope, element, attrs) {
             scope.word = scope.$eval(attrs.sayHello);
         }
     };
