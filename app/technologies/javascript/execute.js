@@ -36,6 +36,13 @@ function c() {
 
     function otherInC() {
         var name = 'otherInC';
+
+        function inC2() {
+            console.log(name, now);
+        }
+
+        inC2();
+
         console.log(name, this, this.x);
     }
 
