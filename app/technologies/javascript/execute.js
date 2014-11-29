@@ -13,40 +13,54 @@
  **/
 'use strict';
 
+var name = 'window';
+
 function a() {
     var name = 'a';
     b(name);
 
     this['<return>'] = {name: name};
+
+    return b();
 }
 
 function b(n) {
     var name = 'b';
     console.log(arguments);
-    c();
+    return c();
 }
 
 function c() {
-    var name = 'c';
-    console.log(Date.now());
+    var name = 'c', now = Date.now();
+    console.log(name, now);
+
+    function otherInC() {
+        var name = 'otherInC';
+        console.log(name, this);
+    }
+
+    otherInC();
+
+    return function childC() {
+        console.log(name, this);
+    };
 }
 
 var obj = new a();
 console.log(obj);
+obj();
 
-
-(function t() {
-    setTimeout(function createA() {
-        new a();
-    }, 2000);
-})();
-
-(function t2() {
-    setTimeout(function createA() {
-        new a();
-    }, 1980);
-})();
-
+//(function t() {
+//    setTimeout(function createA() {
+//        new a();
+//    }, 2000);
+//})();
+//
+//(function t2() {
+//    setTimeout(function createA() {
+//        new a();
+//    }, 1980);
+//})();
 
 var clickButton = document.getElementById('clickButton');
 
