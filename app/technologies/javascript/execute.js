@@ -46,3 +46,15 @@ console.log(obj);
         new a();
     }, 1980);
 })();
+
+
+var clickButton = document.getElementById('clickButton');
+
+clickButton.addEventListener('click', function () {
+    console.log(arguments);
+});
+
+clickButton.onclick = function () {
+    console.log(arguments);
+};
+
