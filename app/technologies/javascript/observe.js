@@ -15,6 +15,8 @@
 (function (window, document) {
     'use strict';
 
+    var me = this;
+
     var clickButton = document.getElementById('clickButton'),
         obj = {},
         i = 0;
