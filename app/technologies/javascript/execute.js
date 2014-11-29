@@ -27,7 +27,7 @@ function a() {
 function b(n) {
     var name = 'b';
     console.log(arguments);
-    return c();
+    return c.apply({x: 13});
 }
 
 function c() {
@@ -36,10 +36,10 @@ function c() {
 
     function otherInC() {
         var name = 'otherInC';
-        console.log(name, this);
+        console.log(name, this, this.x);
     }
 
-    otherInC();
+    otherInC.apply(this);
 
     return function childC() {
         console.log(name, this);
@@ -55,8 +55,8 @@ obj();
 //        new a();
 //    }, 2000);
 //})();
-//
-//(function t2() {
+
+// (function t2() {
 //    setTimeout(function createA() {
 //        new a();
 //    }, 1980);
