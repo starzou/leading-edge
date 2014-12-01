@@ -7,10 +7,13 @@
 
 var App = angular.module('App', []);
 
-App.controller('AppCtrl', ['$scope', function ($scope) {
-    $scope.title = 'Angular 实践2';
+App.run(['$rootScope', function ($rootScope) {
+    $rootScope.title = 'Angular 实践2';
+    $rootScope.words = 'hello world!';
+}]);
 
-    $scope.words = 'hello world!';
+App.controller('AppCtrl', ['$scope', function ($scope) {
+
 }]);
 
 App.directive('sayHello', [function () {
