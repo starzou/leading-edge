@@ -16,7 +16,7 @@
 
     App.controller('AppCtrl', ['$scope', '$modal', '$alert', function ($scope, $modal, $alert) {
 
-        var model = $modal({title: 'hello', content: 'Hello angular-strap!', animation: 'am-fade-and-slide-top', show: false});
+        var model = $modal({title: 'hello', content: 'Hello angular-strap!', animation: 'am-fade-and-scale', placement: 'center', show: false});
 
         $scope.showModal = function () {
             model.$promise.then(model.show);
