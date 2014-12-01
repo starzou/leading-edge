@@ -17,13 +17,13 @@ App.controller('AppCtrl', ['$scope', function ($scope) {
      * 监听作用域事件
      */
     $scope.$on('eventTriggered', function (event) {
-        console.log(event);
+        console.log('AppCtrl', event);
     });
 }]);
 
 App.controller('MainCtrl', ['$scope', function ($scope) {
     $scope.$on('eventTriggered', function (event) {
-        console.log(event);
+        console.log('MainCtrl', event);
     });
 
     /**
