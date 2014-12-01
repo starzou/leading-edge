@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title ng-bind="title"></title>
+    <style>
+        body > div {
+            margin-bottom: 50px;
+            border: 3px dashed green;
+        }
+
+        body > div > h2 {
+            color: blue;
+        }
+    </style>
 </head>
-<body>
+<body ng-cloak>
     <div>
         <h2>Angular 测试</h2>
 
         <div>
             <div say-hello="words"></div>
+        </div>
+    </div>
+
+    <div>
+        <h2>事件</h2>
+        <div>
+
         </div>
     </div>
 
