@@ -10,8 +10,17 @@
 
     var App = angular.module('App', ['mgcrea.ngStrap']);
 
-    App.controller('AppCtrl', ['$scope', function ($scope) {
-        $scope.title = 'angular-strap 研究';
+    App.run(['$rootScope', function ($rootScope) {
+        $rootScope.title = 'angular-strap 研究';
+    }]);
+
+    App.controller('AppCtrl', ['$scope', '$modal', function ($scope, $modal) {
+
+        var model = $modal({scope: $scope, show: false});
+
+        $scope.showModal = function () {
+            model.$promise.then(model.show);
+        };
 
     }]);
 
