@@ -5,7 +5,7 @@
  *@author StarZou
  **/
 
-var App = angular.module('App', []);
+var App = angular.module('App', ['ngAnimate']);
 
 App.run(['$rootScope', function ($rootScope) {
     $rootScope.title = 'Angular 实践2';
@@ -39,6 +39,10 @@ App.controller('MainCtrl', ['$scope', function ($scope) {
     $scope.broadcast = function () {
         $scope.$parent.$broadcast('eventTriggered', {date: Date.now()});
     };
+}]);
+
+App.controller('AnimateCtrl', ['$scope', '$animate', function ($scope, $animate) {
+
 }]);
 
 App.directive('sayHello', [function () {
