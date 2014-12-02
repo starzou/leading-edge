@@ -45,6 +45,10 @@ App.controller('AnimateCtrl', ['$scope', '$animate', function ($scope, $animate)
 
 }]);
 
+App.controller('PrincipleCtrl', ['$scope', function ($scope) {
+
+}]);
+
 App.directive('sayHello', [function () {
     return {
         restrict: 'A',
