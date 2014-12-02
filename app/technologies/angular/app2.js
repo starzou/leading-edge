@@ -46,7 +46,9 @@ App.controller('AnimateCtrl', ['$scope', '$animate', function ($scope, $animate)
 }]);
 
 App.controller('PrincipleCtrl', ['$scope', function ($scope) {
-
+    $scope.$watch('user.name', function (newVal, oldVal, scope) {
+        console.log(arguments);
+    });
 }]);
 
 App.directive('sayHello', [function () {
