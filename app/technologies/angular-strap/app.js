@@ -71,10 +71,28 @@
         };
     }]);
 
+
+    App.constant('VALIDATE', {
+        required : '必填！',
+        number   : "必须为数字！",
+        minlength: '太短！',
+        maxlength: '太长！',
+        min      : '太小！',
+        max      : '太大！',
+        more     : '太多！',
+        email    : 'Email无效！',
+        username : '有效字符为汉字、字母、数字、下划线，以汉字或小写字母开头！',
+        minname  : '长度应大于5字节，一个汉字3字节！',
+        maxname  : '长度应小于15字节，一个汉字3字节！',
+        repasswd : '密码不一致！',
+        url      : 'URL无效！',
+        tag      : '标签错误，不能包含“,”、“，”和“、”'
+    });
+
     /**
      * 表单验证指令, 该指令在 form元素上使用
      */
-    App.directive('validateForm', ['$tooltip', function ($tooltip) {
+    App.directive('validateForm', ['$tooltip', 'VALIDATE', function ($tooltip, VALIDATE) {
         var me = {
             lastTooltips: [],
             validateFn  : function ($element, ngFormController) {
@@ -104,7 +122,7 @@
                          * 显示提示
                          */
                         tooltip = $tooltip(angular.element(formField), {
-                            title    : type,
+                            title    : VALIDATE[type],
                             trigger  : 'manual',
                             placement: 'right',
                             show     : true
@@ -114,8 +132,18 @@
                     });
 
                 });
+            },
 
+            initValidate: function ($element, ngFormController) {
+                var formFields = $element[0].querySelectorAll('[ng-model]'),
+                    me = this;
 
+                angular.forEach(formFields, function (formField) {
+                    formField.addEventListener('change', function (event) {
+                        me.validateFn($element, ngFormController);
+                        event.stopPropagation();
+                    }, false);
+                });
             }
         };
 
@@ -130,7 +158,7 @@
 
                 var formElement = $element[0],
                     ngModelAttributeName = 'ng-model',
-                    formFields = formElement.querySelectorAll('[ ' + ngModelAttributeName + ']'),
+                    formFields = formElement.querySelectorAll('[' + ngModelAttributeName + ']'),
                     formField,
                     index;
 
@@ -149,15 +177,20 @@
                     var ngFormController = $scope[$attr.name]; // 取得ngFormController
 
                     $element.on('submit', function (event) {
-                        me.validateFn($element, ngFormController)
+                        me.validateFn($element, ngFormController);
                     });
 
                     $element.on('reset', function (event) {
 
                     });
+
+                    me.initValidate($element, ngFormController)
                 };
             }
         }
-    }]);
+    }
+    ])
+    ;
 
-})(window, document);
+})
+(window, document);
