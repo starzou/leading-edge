@@ -79,13 +79,13 @@ App.directive('validateForm', function () {
 
             var formElement = $element[0],
                 ngModelAttributeName = 'ng-model',
-                fields = formElement.querySelectorAll('[ ' + ngModelAttributeName + ']'),
-                field,
+                formFields = formElement.querySelectorAll('[ ' + ngModelAttributeName + ']'),
+                formField,
                 index;
 
-            for (index = 0; index < fields.length; index++) {
-                field = fields[index];
-                field.name = field.getAttribute(ngModelAttributeName); // 设置 表单字段的name 为 ng-model属性值
+            for (index = 0; index < formFields.length; index++) {
+                formField = formFields[index];
+                formField.name = formField.getAttribute(ngModelAttributeName); // 设置 表单字段的name 为 ng-model属性值
             }
 
             /**
