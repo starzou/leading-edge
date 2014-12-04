@@ -67,7 +67,7 @@ App.directive('sayHello', [function () {
 /**
  * 表单验证指令, 该指令在 form元素上使用
  */
-App.directive('validateForm', function () {
+App.directive('validateForm', [function () {
     return {
         restrict: 'A',
         compile : function ($element, $attr) {
@@ -93,14 +93,20 @@ App.directive('validateForm', function () {
              */
             formElement.setAttribute('novalidate', 'novalidate');
 
-            console.log(formElement);
 
             return function ($scope, $element, $attr) {
-                var formController = $scope[$attr.name];
+                var formController = $scope[$attr.name]; // 取得ngFormController
 
-                console.log($scope, formController);
+                $element.on('submit', function (event) {
+                    console.log('submit', formController);
+                });
 
+                $element.on('reset', function (event) {
+                    console.log('reset', event);
+                });
+
+                console.log($scope, formController, $element);
             };
         }
     }
-});
+}]);
