@@ -62,3 +62,17 @@ App.directive('sayHello', [function () {
         }
     };
 }]);
+/**
+ * 表单验证指令
+ */
+App.directive('validateForm', function () {
+    return {
+        link: function (scope, element, attrs, ngModel) {
+            var form = scope[attrs.name];
+
+
+            //console.log('validateForm', arguments, form);
+            console.log(element);
+        }
+    };
+});

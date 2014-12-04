@@ -41,35 +41,52 @@
         <h2>Angular 表单验证</h2>
         <div>
             <div>
-                <label>name : </label>
-                <input type="text" ng-model="user.name" required ng-minlength="2" ng-maxlength="4"/>
-            </div>
+                <form name="regForm" validate-form>
+                    <div>
+                        <label>name : </label>
+                        <input type="text" ng-model="user.name" required ng-minlength="2" ng-maxlength="4"/>
+                    </div>
 
-            <div>
-                <label>age : </label>
-                <input type="number" ng-model="user.age" required ng-pattern="/^[1-9]\d{0,1}$/"/>
-            </div>
+                    <div>
+                        <label>age : </label>
+                        <input type="number" ng-model="user.age" required ng-pattern="/^[1-9]\d{0,1}$/"/>
+                    </div>
 
-            <div>
-                <label>hobby : </label>
-                <span>听歌</span>
-                <input type="checkbox" ng-model="user.hobbies.music"/>
-                <span>看电影</span>
-                <input type="checkbox" ng-model="user.hobbies.movie"/>
-            </div>
+                    <div>
+                        <label>sex : </label>
+                        <select ng-model="user.sex">
+                            <option value="boy">boy</option>
+                            <option value="girl">girl</option>
+                        </select>
+                    </div>
 
-            <div>
-                <label>email : </label>
-                <input type="text" ng-model="user.email" required/>
-            </div>
+                    <div>
+                        <label>hobby : </label>
+                        <span>听歌</span>
+                        <input type="checkbox" ng-model="user.hobbies.music"/>
+                        <span>看电影</span>
+                        <input type="checkbox" ng-model="user.hobbies.movie"/>
+                    </div>
 
-            <div>
-                <label>url : </label>
-                <input type="url" ng-model="user.url"/>
-            </div>
+                    <div>
+                        <label>email : </label>
+                        <input type="email" ng-model="user.email" required/>
+                    </div>
 
-            <div>
-                <button>提交</button>
+                    <div>
+                        <label>url : </label>
+                        <input type="url" ng-model="user.url"/>
+                    </div>
+
+                    <div>
+                        <label>intro : </label>
+                        <textarea ng-model="user.intro"></textarea>
+                    </div>
+
+                    <div>
+                        <button>提交</button>
+                    </div>
+                </form>
             </div>
 
             <div>
