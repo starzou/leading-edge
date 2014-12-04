@@ -70,8 +70,8 @@ App.provider('formUtils', function () {
     };
 
 
-    me.getFormFields = function (formElement, attributeName) {
-        return formElement.querySelectorAll('[ ' + attributeName + ']');
+    me.getFormFields = function (formElement, ngModelAttributeName) {
+        return formElement.querySelectorAll('[ ' + ngModelAttributeName + ']');
     };
 
     me.setFormFieldAttribute = function (formField, attributeName, attributeValue) {
