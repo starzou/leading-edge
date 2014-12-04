@@ -139,7 +139,7 @@
                     me = this;
 
                 angular.forEach(formFields, function (formField) {
-                    formField.addEventListener('change', function (event) {
+                    formField.addEventListener('blur', function (event) {
                         me.validateFn($element, ngFormController);
                         event.stopPropagation();
                     }, false);
@@ -184,7 +184,7 @@
 
                     });
 
-                    //me.initValidate($element, ngFormController);
+                    me.initValidate($element, ngFormController);
                 };
             }
         }
