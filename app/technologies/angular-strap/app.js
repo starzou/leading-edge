@@ -49,9 +49,26 @@
             myAside.show();
         };
 
+        var tooltips = [];
         angular.forEach(document.querySelectorAll('button'), function (button) {
-            $tooltip(angular.element(button), {title: button.innerHTML});
+            var tooltip = $tooltip(angular.element(button), {
+                title  : button.innerHTML,
+                trigger: 'manual'
+            });
+            tooltips.push(tooltip);
         });
+
+        $scope.showTooltip = function () {
+            angular.forEach(tooltips, function (tooltip) {
+                tooltip.show();
+            })
+        };
+
+        $scope.hideTooltip = function () {
+            angular.forEach(tooltips, function (tooltip) {
+                tooltip.hide();
+            })
+        };
     }]);
 
 })(window, document);
