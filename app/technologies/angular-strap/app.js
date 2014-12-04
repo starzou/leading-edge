@@ -139,7 +139,7 @@
                     me = this;
 
                 angular.forEach(formFields, function (formField) {
-                    formField.addEventListener('blur', function (event) {
+                    formField.addEventListener('keyup', function (event) {
                         me.validateFn($element, ngFormController);
                         event.stopPropagation();
                     }, false);
