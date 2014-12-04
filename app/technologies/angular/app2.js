@@ -63,11 +63,44 @@ App.directive('sayHello', [function () {
     };
 }]);
 
+App.provider('formUtils', function () {
+    var me = {
+        date   : Date.now(),
+        version: '1.0.0'
+    };
+
+
+    me.getFormFields = function (formElement, attributeName) {
+        return formElement.querySelectorAll('[ ' + attributeName + ']');
+    };
+
+    me.setFormFieldAttribute = function (formField, attributeName, attributeValue) {
+        formField.setAttribute(attributeName, attributeValue);
+        return formField;
+    };
+
+    me.setFormFieldsAttribute = function (formElement, ngModelAttributeName, attributeName, attributeValue) {
+        var formFields = this.getFormFields(formElement),
+            formField,
+            index;
+
+        for (index = 0; index < formFields.length; index++) {
+            formField = formFields[index];
+            this.setFormFieldAttribute(formField, attributeName, attributeValue || formField.getAttribute(ngModelAttributeName));
+        }
+        return formElement;
+    };
+
+    this.$get = [function () {
+        return me;
+    }];
+});
+
 
 /**
  * 表单验证指令, 该指令在 form元素上使用
  */
-App.directive('validateForm', [function () {
+App.directive('validateForm', ['formUtils', function (formUtils) {
     return {
         restrict: 'A',
         compile : function ($element, $attr) {
@@ -105,7 +138,11 @@ App.directive('validateForm', [function () {
                     console.log('reset', event);
                 });
 
-                console.log($scope, formController, $element);
+                //console.log($scope, formController, $element);
+
+
+                console.log(formUtils);
+
             };
         }
     }
