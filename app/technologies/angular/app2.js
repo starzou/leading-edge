@@ -91,6 +91,58 @@ App.provider('formUtils', function () {
         return formElement;
     };
 
+    me.validate = function ($element, ngFormController) {
+        if (ngFormController.$valid) { // 表单验证
+            return true;
+        }
+
+        //var formElement = $element[0],
+        //    formFields = this.getFormFields(formElement, 'ng-model');
+        //
+        //console.log(formFields);
+
+
+        var formElement = $element[0],
+            formFields = this.getFormFields(formElement, 'ng-model'),
+            formField,
+            name;
+
+        angular.forEach(formFields, function (formField) {
+            //console.log(formField);
+            if (formField.nextElementSibling) {
+                formField.parentNode.removeChild(formField.nextElementSibling);
+            }
+        });
+
+        //console.log(formFields);
+        /**
+         *  type : ngModelControllers
+         */
+        angular.forEach(ngFormController.$error, function (ngModelControllers, type) {
+            console.log(type, ngModelControllers);
+
+            angular.forEach(ngModelControllers, function (ngModelController) {
+                name = ngModelController.$name;
+                formField = formElement.querySelector('[name="' + name + '"]');
+
+                var _formField = angular.element(formField);
+
+                _formField.after('<span>' + type + '</span>');
+                console.log(name, type, formField, _formField);
+            });
+        });
+    };
+
+    me.initValidate = function ($element, ngFormController) {
+        var formFields = this.getFormFields($element[0], 'ng-model');
+        angular.forEach(formFields, function (formField) {
+            formField.addEventListener('blur', function (event) {
+                me.validate($element, ngFormController);
+                event.stopPropagation();
+            }, false);
+        });
+    };
+
     this.$get = [function () {
         return me;
     }];
@@ -106,7 +158,7 @@ App.directive('validateForm', ['formUtils', function (formUtils) {
         compile : function ($element, $attr) {
 
             /**
-             * 为表单的 添加了ng-model属性的字段 绑定 name,
+             * 为表单添加了ng-model属性的字段 绑定 name,
              * 以便于angular 为其创建 ngModelController, 实现字段校验
              */
 
@@ -128,20 +180,24 @@ App.directive('validateForm', ['formUtils', function (formUtils) {
 
 
             return function ($scope, $element, $attr) {
-                var formController = $scope[$attr.name]; // 取得ngFormController
+                var ngFormController = $scope[$attr.name]; // 取得ngFormController
 
                 $element.on('submit', function (event) {
-                    console.log('submit', formController);
+                    console.log('submit', ngFormController);
+
+                    formUtils.validate($element, ngFormController);
                 });
 
                 $element.on('reset', function (event) {
                     console.log('reset', event);
                 });
 
-                //console.log($scope, formController, $element);
+                formUtils.initValidate($element, ngFormController);
+
+                console.log($scope, ngFormController, $element);
 
 
-                console.log(formUtils);
+                //console.log(formUtils);
 
             };
         }
