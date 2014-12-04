@@ -184,7 +184,7 @@
 
                     });
 
-                    me.initValidate($element, ngFormController)
+                    //me.initValidate($element, ngFormController);
                 };
             }
         }
