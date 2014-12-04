@@ -20,6 +20,62 @@
             <button class="btn btn-success" ng-click="showTooltip();">show Tooltip</button>
             <button class="btn btn-success" ng-click="hideTooltip();">hide Tooltip</button>
         </div>
+
+        <div>
+            <div>
+                <form name="regForm" validate-form>
+                    <div>
+                        <label>name : </label>
+                        <input type="text" ng-model="user.name" required ng-minlength="2" ng-maxlength="4"/>
+                    </div>
+
+                    <div>
+                        <label>age : </label>
+                        <input type="number" ng-model="user.age" required ng-pattern="/^[1-9]\d{0,1}$/"/>
+                    </div>
+
+                    <div>
+                        <label>sex : </label>
+                        <select ng-model="user.sex">
+                            <option value="boy">boy</option>
+                            <option value="girl">girl</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label>hobby : </label>
+                        <span>听歌</span>
+                        <input type="checkbox" ng-model="user.hobbies.music"/>
+                        <span>看电影</span>
+                        <input type="checkbox" ng-model="user.hobbies.movie"/>
+                    </div>
+
+                    <div>
+                        <label>email : </label>
+                        <input type="email" ng-model="user.email" required/>
+                    </div>
+
+                    <div>
+                        <label>url : </label>
+                        <input type="url" ng-model="user.url"/>
+                    </div>
+
+                    <div>
+                        <label>intro : </label>
+                        <textarea ng-model="user.intro"></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit">提交</button>
+                        <button type="reset">重置</button>
+                    </div>
+                </form>
+            </div>
+
+            <div>
+                <pre ng-bind="user | json"></pre>
+            </div>
+        </div>
     </div>
 
     <script src="/bower_components/angular/angular.js"></script>
