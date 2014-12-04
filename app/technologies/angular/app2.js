@@ -62,17 +62,45 @@ App.directive('sayHello', [function () {
         }
     };
 }]);
+
+
 /**
- * 表单验证指令
+ * 表单验证指令, 该指令在 form元素上使用
  */
 App.directive('validateForm', function () {
     return {
-        link: function (scope, element, attrs, ngModel) {
-            var form = scope[attrs.name];
+        restrict: 'A',
+        compile : function ($element, $attr) {
 
+            /**
+             * 为表单的 添加了ng-model属性的字段 绑定 name,
+             * 以便于angular 为其创建 ngModelController, 实现字段校验
+             */
 
-            //console.log('validateForm', arguments, form);
-            console.log(element);
+            var formElement = $element[0],
+                ngModelAttributeName = 'ng-model',
+                fields = formElement.querySelectorAll('[ ' + ngModelAttributeName + ']'),
+                field,
+                index;
+
+            for (index = 0; index < fields.length; index++) {
+                field = fields[index];
+                field.name = field.getAttribute(ngModelAttributeName); // 设置 表单字段的name 为 ng-model属性值
+            }
+
+            /**
+             * 使原生浏览器的校验无效
+             */
+            formElement.setAttribute('novalidate', 'novalidate');
+
+            console.log(formElement);
+
+            return function ($scope, $element, $attr) {
+                var formController = $scope[$attr.name];
+
+                console.log($scope, formController);
+
+            };
         }
-    };
+    }
 });
