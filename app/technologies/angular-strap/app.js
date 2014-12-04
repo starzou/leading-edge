@@ -14,7 +14,7 @@
         $rootScope.title = 'angular-strap 研究';
     }]);
 
-    App.controller('AppCtrl', ['$scope', '$modal', '$alert', '$aside', function ($scope, $modal, $alert, $aside) {
+    App.controller('AppCtrl', ['$scope', '$modal', '$alert', '$aside', '$tooltip', function ($scope, $modal, $alert, $aside, $tooltip) {
 
         var model = $modal({
             title    : 'hello',
@@ -31,7 +31,7 @@
         var myAlert = $alert({
             title    : 'Holy guacamole!',
             content  : 'Best check yo self, you\'re not looking too good.',
-            placement: 'top',
+            placement: 'top-right',
             type     : 'info',
             show     : false,
             animation: 'am-fade-and-slide-top',
@@ -48,6 +48,10 @@
         $scope.showAside = function () {
             myAside.show();
         };
+
+        angular.forEach(document.querySelectorAll('button'), function (button) {
+            $tooltip(angular.element(button), {title: button.innerHTML});
+        });
     }]);
 
 })(window, document);
