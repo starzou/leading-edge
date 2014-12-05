@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <title>angular-strap 研究</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap-additions/dist/bootstrap-additions.css"/>
+
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower_components/angular-motion/dist/angular-motion.css"/>
+</head>
+<body ng-controller="AppCtrl" ng-cloak>
+    <div class="container">
+        <h1 ng-bind="title"></h1>
+
+        <div class="row">
+            <form name="datepickerForm" class="form-inline" role="form">
+                <!-- Basic example -->
+                <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+                    <label class="control-label">
+                        <i class="fa fa-calendar"></i>日期：
+                    </label>
+                    <input type="text" class="form-control" ng-model="selectedDate" name="date" bs-datepicker>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="/bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+    <script src="app2.js"></script>
+</body>
+</html>
