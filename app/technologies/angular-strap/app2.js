@@ -17,7 +17,13 @@
         $rootScope.title = 'angular-strap 研究2';
     }]);
 
-    App.controller('AppCtrl', ['$scope', function ($scope) {
+    App.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
+
+        $scope.submit = function () {
+            $http.post('/rest/users', $scope.user).success(function (data) {
+                console.log(data);
+            });
+        };
 
     }]);
 

@@ -14,12 +14,21 @@
 
         <div class="row">
             <form name="datepickerForm" class="form-inline" role="form">
-                <!-- Basic example -->
-                <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+                <div class="form-group">
                     <label class="control-label">
-                        <i class="fa fa-calendar"></i>日期：
+                        姓名
                     </label>
-                    <input type="text" class="form-control" ng-model="selectedDate" name="date" bs-datepicker>
+                    <input type="text" class="form-control" ng-model="user.name" name="name">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">
+                        日期：
+                    </label>
+                    <input type="text" class="form-control" ng-model="user.date" name="date" bs-datepicker>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" ng-click="submit();">提交</button>
                 </div>
             </form>
         </div>
