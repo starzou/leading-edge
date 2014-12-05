@@ -11,6 +11,13 @@
 
     App.config(['$datepickerProvider', function ($datepickerProvider) {
         console.log($datepickerProvider);
+
+        angular.extend($datepickerProvider.defaults, {
+            dateFormat: 'yyyy-MM-dd',
+            animation : 'am-fade-and-slide-top',
+            startWeek : 1,
+            maxDate   : Date.now()
+        });
     }]);
 
     App.run(['$rootScope', function ($rootScope) {
