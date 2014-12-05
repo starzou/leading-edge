@@ -25,11 +25,23 @@
         $rootScope.title = 'angular-strap 研究2';
     }]);
 
-    App.controller('AppCtrl', ['$scope', '$http', function ($scope, $http) {
+    App.controller('AppCtrl', ['$scope', '$http', '$alert', function ($scope, $http, $alert) {
 
         $scope.submit = function () {
             $http.post('/rest/users', $scope.user).success(function (data) {
                 console.log(data);
+            });
+        };
+
+
+        $scope.showAlert = function () {
+            $alert({
+                title    : '警告!',
+                content  : '服务器磁盘不足!',
+                placement: 'top-right',
+                type     : 'info',
+                animation: 'am-fade-and-slide-top',
+                duration : 3
             });
         };
 
