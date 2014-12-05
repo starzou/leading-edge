@@ -16,6 +16,7 @@
             dateFormat: 'yyyy-MM-dd',
             animation : 'am-fade-and-slide-top',
             startWeek : 1,
+            autoclose : true,
             maxDate   : Date.now()
         });
     }]);
@@ -32,6 +33,22 @@
             });
         };
 
+    }]);
+
+
+    App.directive('dateRange', [function () {
+        return {
+            replace : true,
+            //scope   : true,
+            template: '<div class="form-inline"><input type="text" class="form-control" ng-model="startDate" data-max-date="{{endDate}}" placeholder="开始日期" bs-datepicker><input type="text" class="form-control" ng-model="endDate" data-min-date="{{startDate}}" placeholder="结束日期" bs-datepicker></div>'
+        };
+    }]);
+
+    App.directive('datetimePicker', [function () {
+        return {
+            replace : true,
+            template: '<div class="form-inline"><input type="text" size="10" class="form-control" ng-model="date" bs-datepicker><input type="text" size="8" class="form-control" ng-model="time" bs-timepicker></div>'
+        };
     }]);
 
 })(window, document);

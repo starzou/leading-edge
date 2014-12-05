@@ -13,6 +13,7 @@
         <h1 ng-bind="title"></h1>
 
         <div class="row">
+            <h3>表单</h3>
             <form name="datepickerForm" class="form-inline" role="form">
                 <div class="form-group">
                     <label class="control-label">
@@ -31,6 +32,16 @@
                     <button type="button" class="btn btn-primary" ng-click="submit();">提交</button>
                 </div>
             </form>
+        </div>
+        <hr/>
+        <div class="row">
+            <h3>日期区间</h3>
+            <div date-range></div>
+        </div>
+        <hr/>
+        <div class="row">
+            <h3>日期时间控件</h3>
+            <div datetime-picker></div>
         </div>
 
     </div>
