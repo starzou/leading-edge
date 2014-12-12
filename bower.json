@@ -15,7 +15,8 @@
     "bootswatch": "~3.3.1",
     "bootstrap-additions": "~0.2.3",
     "angular-i18n": "~1.3.5",
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "angular-dragdrop": "~1.0.8"
   },
   "devDependencies": {}
 }
