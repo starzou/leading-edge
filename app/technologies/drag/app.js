@@ -55,7 +55,7 @@ App.factory('dragDrop', function () {
                     console.log(dest);
 
                     if ($scope.endDrop) {
-                        $scope.endDrop(event, source, dest);
+                        $scope.endDrop(event, dest, source);
                     }
                 }
             });
