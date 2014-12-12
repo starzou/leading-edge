@@ -12,17 +12,16 @@ App.run(['$rootScope', function ($rootScope) {
 }]);
 
 App.controller('AppCtrl', ['$scope', function ($scope) {
-
+    $scope.shops = [{shopName: '店铺-1', code: 1}, {shopName: '店铺-2', code: 2}, {shopName: '店铺-3', code: 3}];
 }]);
-
-
-var target;
 
 App.factory('dragDrop', function () {
     var me = {
         bindDragStart: function ($element) {
             $element.on('dragstart', function (event) {
-                me.target = event.target; // 放置要被移动的对象
+                if ($element[0] === event.target) { // 如果选中的对象, 是允许移动的对象
+                    me.target = event.target; // 放置要被移动的对象
+                }
             });
 
             return me;
@@ -39,7 +38,7 @@ App.factory('dragDrop', function () {
         bindDrop: function ($element) {
             $element.on('drop', function (event) {
                 event.preventDefault();
-                if ($element[0] === event.target) {// 如果目标地址, 是允许放置对象的地址, 则放置
+                if ($element[0] === event.target && me.target) {// 如果目标地址, 是允许放置对象的地址,并且 被移动的对象,不为空, 则放置
                     event.target.appendChild(me.target);
                 }
             });
@@ -59,14 +58,6 @@ App.directive('uiDrag', ['dragDrop', function (dragDrop) {
             $element.attr('draggable', true);// 元素设为可拖动
             return function ($scope, $element, $attr) {
                 dragDrop.bindDragStart($element).bindDragOver($element);
-
-                //$element.on('dragstart', function (event) {
-                //    target = event.target;
-                //});
-                //
-                //$element.on('dragover', function (event) {
-                //    event.preventDefault();
-                //});
             };
         }
     }
@@ -78,18 +69,7 @@ App.directive('uiDrop', ['dragDrop', function (dragDrop) {
         scope   : true,
         compile : function ($element, $attr) {
             return function ($scope, $element, $attr) {
-
                 dragDrop.bindDrop($element).bindDragOver($element);
-
-                //$element.on('drop', function (event) {
-                //    event.preventDefault();
-                //    event.target.appendChild(target);
-                //});
-                //
-                //
-                //$element.on('dragover', function (event) {
-                //    event.preventDefault();
-                //});
             };
         }
     }
