@@ -6,10 +6,11 @@
 </head>
 <body>
 
-    <div ui-drop style="width: 300px;height: 300px;border: 1px solid red;float: left;"></div>
-    <div ui-drop style="width: 300px;height: 300px;border: 1px solid red;float: left;"></div>
+    <div ui-drop style="width: 300px;height: 300px;border: 1px solid red;float: left;">组1</div>
+    <div ui-drop style="width: 300px;height: 300px;border: 1px solid red;float: left;">组2</div>
 
-    <div style="clear: left;">
+    <div style="clear: left;width: 300px;height: 200px;border: 1px solid red;" ui-drop>
+        未分组店铺
         <button style="cursor: pointer;" ui-drag ng-repeat="shop in shops" ng-bind="shop.shopName"></button>
     </div>
 
