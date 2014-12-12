@@ -22,7 +22,7 @@ App.factory('dragDrop', function () {
     var me = {
         bindDragStart: function ($element) {
             $element.on('dragstart', function (event) {
-                me.target = event.target;
+                me.target = event.target; // 放置要被移动的对象
             });
 
             return me;
@@ -30,16 +30,20 @@ App.factory('dragDrop', function () {
 
         bindDragOver: function ($element) {
             $element.on('dragover', function (event) {
-                event.preventDefault();
+                event.preventDefault(); // 移动过程中, 阻止浏览器默认行为
             });
+
             return me;
         },
 
         bindDrop: function ($element) {
             $element.on('drop', function (event) {
                 event.preventDefault();
-                event.target.appendChild(me.target);
+                if ($element[0] === event.target) {// 如果目标地址, 是允许放置对象的地址, 则放置
+                    event.target.appendChild(me.target);
+                }
             });
+
             return me;
         }
     };
@@ -47,42 +51,45 @@ App.factory('dragDrop', function () {
     return me;
 });
 
-App.directive('uiDrag', [function () {
+App.directive('uiDrag', ['dragDrop', function (dragDrop) {
     return {
         restrict: 'A',
         scope   : true,
         compile : function ($element, $attr) {
             $element.attr('draggable', true);// 元素设为可拖动
             return function ($scope, $element, $attr) {
+                dragDrop.bindDragStart($element).bindDragOver($element);
 
-                $element.on('dragstart', function (event) {
-                    target = event.target;
-                });
-
-                $element.on('dragover', function (event) {
-                    event.preventDefault();
-                });
+                //$element.on('dragstart', function (event) {
+                //    target = event.target;
+                //});
+                //
+                //$element.on('dragover', function (event) {
+                //    event.preventDefault();
+                //});
             };
         }
     }
 }]);
 
-App.directive('uiDrop', [function () {
+App.directive('uiDrop', ['dragDrop', function (dragDrop) {
     return {
         restrict: 'A',
         scope   : true,
         compile : function ($element, $attr) {
             return function ($scope, $element, $attr) {
 
-                $element.on('drop', function (event) {
-                    event.preventDefault();
-                    event.target.appendChild(target);
-                });
+                dragDrop.bindDrop($element).bindDragOver($element);
 
-
-                $element.on('dragover', function (event) {
-                    event.preventDefault();
-                });
+                //$element.on('drop', function (event) {
+                //    event.preventDefault();
+                //    event.target.appendChild(target);
+                //});
+                //
+                //
+                //$element.on('dragover', function (event) {
+                //    event.preventDefault();
+                //});
             };
         }
     }
