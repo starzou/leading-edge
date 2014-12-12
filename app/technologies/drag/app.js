@@ -15,6 +15,10 @@ App.controller('AppCtrl', ['$scope', function ($scope) {
     $scope.shops = [{shopName: '店铺-1', code: 1}, {shopName: '店铺-2', code: 2}, {shopName: '店铺-3', code: 3}];
 
     $scope.groups = [{groupName: '组-1', code: 1}, {groupName: '组-2', code: 2}, {groupName: '组-3', code: 3}];
+
+    $scope.endDrop = function () {
+        console.log(arguments);
+    }
 }]);
 
 App.factory('dragDrop', function () {
@@ -37,11 +41,18 @@ App.factory('dragDrop', function () {
             return me;
         },
 
-        bindDrop: function ($element) {
+        bindDrop: function ($element, $scope) {
             $element.on('drop', function (event) {
                 event.preventDefault();
                 if ($element[0] === event.target && me.target) {// 如果目标地址, 是允许放置对象的地址,并且 被移动的对象,不为空, 则放置
+                    var source = me.target.parentNode, // 源地址
+                        dest = event.target; // 目标地址
+
                     event.target.appendChild(me.target);
+
+                    if ($scope.endDrop) {
+                        $scope.endDrop(event, source, dest);
+                    }
                 }
             });
 
@@ -71,7 +82,8 @@ App.directive('uiDrop', ['dragDrop', function (dragDrop) {
         scope   : true,
         compile : function ($element, $attr) {
             return function ($scope, $element, $attr) {
-                dragDrop.bindDrop($element).bindDragOver($element);
+                dragDrop.bindDrop($element, $scope).bindDragOver($element);
+                console.log(arguments);
             };
         }
     }
