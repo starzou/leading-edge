@@ -6,7 +6,7 @@
 </head>
 <body ng-cloak>
 
-    <div ui-drop="{{group.code}}" style="width: 300px;height: 300px;border: 1px solid red;float: left;" ng-repeat="group in groups">
+    <div style="width: 300px;height: 300px;border: 1px solid red;float: left;" ng-repeat="group in groups" ui-drop="{{group.code}}">
         <span ng-bind="group.groupName"></span>
         <button style="cursor: pointer;" ui-drag ng-repeat="shop in group.shops" ng-bind="shop.shopName"></button>
     </div>

@@ -45,10 +45,14 @@ App.factory('dragDrop', function () {
             $element.on('drop', function (event) {
                 event.preventDefault();
                 if ($element[0] === event.target && me.target) {// 如果目标地址, 是允许放置对象的地址,并且 被移动的对象,不为空, 则放置
-                    var source = me.target.parentNode, // 源地址
+                    var current = me.target, // 当前拖动的对象
+                        source = current.parentNode, // 源地址
                         dest = event.target; // 目标地址
 
-                    event.target.appendChild(me.target);
+                    dest.appendChild(current); // 追加元素
+
+                    console.log(source);
+                    console.log(dest);
 
                     if ($scope.endDrop) {
                         $scope.endDrop(event, source, dest);
