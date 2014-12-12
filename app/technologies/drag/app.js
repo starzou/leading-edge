@@ -13,6 +13,8 @@ App.run(['$rootScope', function ($rootScope) {
 
 App.controller('AppCtrl', ['$scope', function ($scope) {
     $scope.shops = [{shopName: '店铺-1', code: 1}, {shopName: '店铺-2', code: 2}, {shopName: '店铺-3', code: 3}];
+
+    $scope.groups = [{groupName: '组-1', code: 1}, {groupName: '组-2', code: 2}, {groupName: '组-3', code: 3}];
 }]);
 
 App.factory('dragDrop', function () {
