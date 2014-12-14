@@ -25,7 +25,7 @@
         });
 
         $scope.showModal = function () {
-            model.$promise.then(model.show);
+            model.show();
         };
 
         var myAlert = $alert({
