@@ -21,12 +21,13 @@
         }
     </style>
 </head>
-<body ng-controller="AppController">
+<body ng-controller="AppController" ng-cloak>
     <h1 ng-bind="title"></h1>
 
     <div>
         <div>
             <button ng-click="bind();">angular.bind</button>
+            <button ng-click="element();">angular.element</button>
         </div>
     </div>
 
