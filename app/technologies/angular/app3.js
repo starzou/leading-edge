@@ -16,10 +16,9 @@
 
     var App = angular.module('app3', []);
 
-    App.controller('AppController', ['$scope', '$rootElement', function ($scope, $rootElement) {
+    App.controller('AppController', ['$scope', '$compile', function ($scope, $compile) {
         $scope.title = 'Angular 研究 3';
-
-        console.log($rootElement);
+        $scope.hello = 'Hello Angular 研究 3';
 
         /**
          * angular.bind 示例
@@ -41,15 +40,27 @@
         $scope.element = function () {
             var $html = angular.element(document.documentElement),
                 $body = angular.element(document.body),
-                $h1 = angular.element('<h1>hello</h1>');
+                $h1 = angular.element('<h1 ng-bind="title" ng-title="hello">hello</h1>');
 
-            $body.append($h1);
+            var element = $compile($h1)($scope);
+            $body.append(element);
 
-            console.log($html.scope());
-            console.log($body);
-            console.log($h1);
+            console.log(element);
+
+            //console.log($html.scope());
+            //console.log($body, $body.scope());
+            //console.log($h1);
         };
 
+    }]);
+
+    App.directive('ngTitle', [function () {
+        return {
+            link: function postLink($scope, $element, $attr) {
+                var title = $scope[$attr['ngTitle'] || $attr['ngModel'] || $attr['ngBind']];
+                $element.attr('title', title);
+            }
+        };
     }]);
 
 })(window, document);
