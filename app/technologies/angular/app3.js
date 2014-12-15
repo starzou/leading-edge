@@ -16,9 +16,20 @@
 
     var App = angular.module('app3', []);
 
-    App.controller('AppController', ['$scope', function ($scope) {
-
+    App.controller('AppController', ['$scope', '$rootElement', function ($scope, $rootElement) {
         $scope.title = 'Angular 研究 3';
+
+        console.log($rootElement);
+
+        var fn = function (word) {
+            console.log('%s say %s', this.name, word);
+        };
+
+        var warpFn = angular.bind({name: 'StarZou'}, fn, 'hello');
+
+        $scope.bind = function () {
+            warpFn();
+        };
 
     }]);
 
