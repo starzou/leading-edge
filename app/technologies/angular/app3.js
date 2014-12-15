@@ -38,14 +38,21 @@
          * angular.element 示例
          */
         $scope.element = function () {
-            var $html = angular.element(document.documentElement),
+            var h1Template = '<h1 ng-bind="title" ng-title="hello" style="cursor: pointer;color: red;" ng-click="showTitle()">hello</h1>',
+                $html = angular.element(document.documentElement),
                 $body = angular.element(document.body),
-                $h1 = angular.element('<h1 ng-bind="title" ng-title="hello">hello</h1>');
+                $h1 = angular.element(h1Template);
 
-            var element = $compile($h1)($scope);
+
+            var childScope = $scope.$new(),
+                element = $compile($h1)(childScope);
+
+            childScope.showTitle = function () {
+                console.log(childScope.title);
+            };
+
             $body.append(element);
-
-            console.log(element);
+            console.log(childScope);
 
             //console.log($html.scope());
             //console.log($body, $body.scope());
@@ -59,6 +66,12 @@
             link: function postLink($scope, $element, $attr) {
                 var title = $scope[$attr['ngTitle'] || $attr['ngModel'] || $attr['ngBind']];
                 $element.attr('title', title);
+
+                $element.on('click', function () {
+                    console.log($scope.title);
+
+                    $element.css('color', 'green');
+                });
             }
         };
     }]);
