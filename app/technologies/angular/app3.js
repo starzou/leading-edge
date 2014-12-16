@@ -63,15 +63,18 @@
 
     App.directive('ngTitle', [function () {
         return {
-            link: function postLink($scope, $element, $attr) {
-                var title = $scope[$attr['ngTitle'] || $attr['ngModel'] || $attr['ngBind']];
-                $element.attr('title', title);
+            compile: function compile($element, $attr) {
+                console.log($element, $attr);
+                return function postLink($scope, $element, $attr) {
+                    var title = $scope[$attr['ngTitle'] || $attr['ngModel'] || $attr['ngBind']];
+                    $element.attr('title', title);
 
-                $element.on('click', function () {
-                    console.log($scope.title);
+                    $element.on('click', function () {
+                        console.log($scope.title);
 
-                    $element.css('color', 'green');
-                });
+                        $element.css('color', 'green');
+                    });
+                }
             }
         };
     }]);
