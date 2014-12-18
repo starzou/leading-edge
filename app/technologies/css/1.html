@@ -12,6 +12,7 @@
     <style>
         .element {
             border: solid #6AC5AC 3px;
+            margin: 20px;
         }
 
         .inline {
@@ -33,6 +34,14 @@
             margin: 50px auto;
             padding: 30px;
             text-align: center;
+            box-sizing: border-box;
+        }
+
+        .relative {
+            position: relative;
+            top: 15px;
+            left: 50px;
+            max-width: 500px;
         }
     </style>
 </head>
@@ -43,6 +52,9 @@
 <h2 style="display: none;visibility: hidden;">world</h2>
 
 <div class="element mid">b</div>
+<div class="element">c</div>
+<div class="element relative">d</div>
+<div class="element">e</div>
 
 <ul class="menus">
     <li>1</li>
