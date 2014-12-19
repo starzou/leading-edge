@@ -16,7 +16,14 @@
 
     var App = angular.module('app3', []);
 
-    App.controller('AppController', ['$scope', '$compile', function ($scope, $compile) {
+    App.controller('AppController', ['$scope', '$compile', '$parse', function ($scope, $compile, $parse) {
+
+        /**
+         * $parse 示例
+         */
+        var psFn = $parse('user.name');
+        console.log(psFn({user: {name: 'context-StarZou'}}, {user: {name: 'local-StarZou'}}));
+
         $scope.title = 'Angular 研究 3';
         $scope.hello = 'Hello Angular 研究 3';
 
