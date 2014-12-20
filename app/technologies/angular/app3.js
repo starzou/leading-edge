@@ -63,6 +63,7 @@
 
             //console.log($html.scope());
             //console.log($body, $body.scope());
+            //console.log($body.controller());
             //console.log($h1);
         };
 
