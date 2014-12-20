@@ -1,0 +1,66 @@
+<!--
+  ~ https://github.com/starzou
+  ~
+  ~ Copyright (c) 2014 StarZou
+  ~ Licensed under the MIT license.
+  -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 布局</title>
+    <style>
+        .border {
+            border: solid #6AC5AC 3px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .slider {
+            position: absolute;
+            left: 0px;
+            width: 200px;
+        }
+
+        .content {
+            margin-left: 200px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container border">
+        <nav class="slider border">
+            <ul>
+                <li>菜单1</li>
+                <li>菜单2</li>
+                <li>菜单3</li>
+            </ul>
+        </nav>
+        <section class="content border">
+            <p>内容1</p>
+        </section>
+        <section class="content border">
+            <p>内容2</p>
+        </section>
+        <section class="content border">
+            <p>内容3</p>
+        </section>
+        <footer class="footer border">
+            页脚
+        </footer>
+    </div>
+
+</body>
+</html>
