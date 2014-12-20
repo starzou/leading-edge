@@ -16,7 +16,7 @@
             border: 3px dashed green;
         }
 
-        body > div > h2 {
+        body > div h2 {
             color: blue;
         }
     </style>
@@ -26,8 +26,18 @@
 
     <div>
         <div>
+            <h2>Angular API</h2>
+
             <button ng-click="bind();">angular.bind</button>
             <button ng-click="element();">angular.element</button>
+        </div>
+        <div>
+            <h2>HTML5 input</h2>
+
+            <form>
+                <input type="color"/>
+                <input type="datetime-local"/>
+            </form>
         </div>
     </div>
 
