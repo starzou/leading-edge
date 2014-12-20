@@ -20,10 +20,15 @@
         body > div h2 {
             color: blue;
         }
+
+        .center{
+            margin: 20px auto;
+            max-width: 300px;
+        }
     </style>
 </head>
 <body ng-controller="AppController" ng-cloak>
-    <h1 ng-bind="title"></h1>
+    <h1 class="center" ng-bind="title"></h1>
 
     <div>
         <div>
