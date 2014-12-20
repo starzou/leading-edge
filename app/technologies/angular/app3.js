@@ -87,4 +87,33 @@
         };
     }]);
 
+    App.directive('animateIt', [function () {
+        return {
+            restrict   : 'EAC',
+            scope      : true,
+            templateUrl: 'animate-dropdown.html',
+            compile    : function compile($element, $attr) {
+                return function postLink($scope, $element, $attr) {
+                    var selector = $attr['animateIt'],
+                        targetElement = selector ? document.querySelector(selector) : document.body,
+                        $targetElement = angular.element(targetElement);
+
+                    $targetElement.addClass('animated');
+
+                    $scope.$watch('animations', function (newValue, oldValue) {
+                        if (newValue === oldValue && newValue === undefined) {
+                            return;
+                        }
+                        if (oldValue) {
+                            $targetElement.removeClass(oldValue);
+                        }
+                        if (newValue) {
+                            $targetElement.addClass(newValue);
+                        }
+                    });
+                }
+            }
+        };
+    }]);
+
 })(window, document);
