@@ -45,7 +45,7 @@
          * angular.element 示例
          */
         $scope.element = function () {
-            var h1Template = '<h1 ng-bind="title" ng-title="hello" style="cursor: pointer;color: red;" ng-click="showTitle()">hello</h1>',
+            var h1Template = '<h1 ng-bind="title" ng-title="hello" class="animated bounce" style="cursor: pointer;color: red;" ng-click="showTitle()">hello</h1>',
                 $html = angular.element(document.documentElement),
                 $body = angular.element(document.body),
                 $h1 = angular.element(h1Template);
