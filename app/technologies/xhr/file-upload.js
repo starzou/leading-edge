@@ -29,9 +29,9 @@ function handleFiles(files) {
             continue;
         }
 
-        //createImgPreviewElement(file, previewContainer);
+        createImgPreviewElement(file, previewContainer);
 
-        createCanvasPreviewElement(file, previewContainer);
+        //createCanvasPreviewElement(file, previewContainer);
         console.log(file);
     }
 }
@@ -44,13 +44,11 @@ function createImgPreviewElement(file, container) {
     img.style.height = '60px';
 
     img.file = file;
-    container.appendChild(img);
 
-    reader.onload = (function (aImg) {
-        return function (e) {
-            aImg.src = e.target.result;
-        };
-    })(img);
+    reader.onload = function (e) {
+        img.src = e.target.result;
+        container.appendChild(img);
+    };
     reader.readAsDataURL(file);
 }
 
