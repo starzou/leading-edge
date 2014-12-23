@@ -29,8 +29,9 @@ function handleFiles(files) {
             continue;
         }
 
-        createImgPreviewElement(file, previewContainer);
+        //createImgPreviewElement(file, previewContainer);
 
+        createCanvasPreviewElement(file, previewContainer);
         console.log(file);
     }
 }
@@ -51,4 +52,21 @@ function createImgPreviewElement(file, container) {
         };
     })(img);
     reader.readAsDataURL(file);
+}
+
+function createCanvasPreviewElement(file, container) {
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+
+    canvas.width = 100;
+    canvas.height = 100;
+    container.appendChild(canvas);
+
+    var img = new Image();
+    img.width = 60;
+    img.height = 60;
+    img.src = URL.createObjectURL(file);
+    img.onload = function () {
+        ctx.drawImage(img, 20, 20);
+    }
 }
