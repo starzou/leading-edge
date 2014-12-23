@@ -68,3 +68,16 @@ function createCanvasPreviewElement(file, container) {
         ctx.drawImage(img, 20, 20);
     }
 }
+
+function sendFile(options) {
+    var xhr = new XMLHttpRequest();
+    var formData = new FormData();
+    xhr.open("POST", options.url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr);
+        }
+    };
+    formData.append(options.name, options.file);
+    xhr.send(formData);
+}
