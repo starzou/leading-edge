@@ -5,7 +5,7 @@
  * @author StarZou
  **/
 
-var previewDiv = document.getElementById('previewDiv');
+var previewContainer = document.getElementById('previewContainer');
 
 function handleFiles(files) {
     var file,
@@ -29,13 +29,13 @@ function handleFiles(files) {
             continue;
         }
 
-        createPreviewElement(file, previewDiv);
+        createImgPreviewElement(file, previewContainer);
 
         console.log(file);
     }
 }
 
-function createPreviewElement(file, container) {
+function createImgPreviewElement(file, container) {
     var img = document.createElement("img"),
         reader = new FileReader();
 
