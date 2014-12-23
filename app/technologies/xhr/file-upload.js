@@ -81,3 +81,20 @@ function sendFile(options) {
     formData.append(options.name, options.file);
     xhr.send(formData);
 }
+
+function uploadButtonClick() {
+    var filesInput = document.getElementById('files'),
+        file,
+        files = filesInput.files,
+        index,
+        length = files.length;
+
+    if (length === 0) {
+        return null;
+    }
+
+    for (index = 0; index < length; index++) {
+        file = files[index];
+        console.log(file);
+    }
+}
