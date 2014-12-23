@@ -5,6 +5,8 @@
  * @author StarZou
  **/
 
+var previewDiv = document.getElementById('previewDiv');
+
 function handleFiles(files) {
     var file,
         index,
@@ -27,19 +29,21 @@ function handleFiles(files) {
             continue;
         }
 
-        createPreviewElement(file);
+        createPreviewElement(file, previewDiv);
 
         console.log(file);
     }
-
-    console.log(files);
 }
 
-function createPreviewElement(file) {
+function createPreviewElement(file, container) {
     var img = document.createElement("img"),
         reader = new FileReader();
+
+    img.style.width = '60px';
+    img.style.height = '60px';
+
     img.file = file;
-    document.body.appendChild(img);
+    container.appendChild(img);
 
     reader.onload = (function (aImg) {
         return function (e) {
