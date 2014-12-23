@@ -97,6 +97,6 @@ function uploadButtonClick() {
         file = files[index];
         console.log(file);
 
-        sendFile({url: '/files', name: 'myFile', file: file});
+        sendFile({url: '/rest/files', name: 'myFile', file: file});
     }
 }
