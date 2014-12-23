@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app')));
-app.use(multer({dest: './app/images/uploads/'}));
+app.use(multer({dest: 'D:/uploads/'}));
 
 app.use('/', routes);
 app.use('/users', users);
