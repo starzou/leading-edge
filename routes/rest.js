@@ -53,4 +53,10 @@ router.post('/users', function (req, res) {
     res.send({status: 'OK'});
 });
 
+
+router.post('/files', function (req, res) {
+    console.log(req);
+    res.send({status: 200, message: 'OK'});
+});
+
 module.exports = router;

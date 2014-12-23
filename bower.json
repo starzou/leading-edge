@@ -2,7 +2,7 @@
   "name": "leading-edge",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "~1.3.3",
+    "angular": "~1.3.8",
     "jquery": "~2.1.1",
     "underscore": "~1.7.0",
     "bootstrap": "~3.3.1",
@@ -20,7 +20,8 @@
     "animate.css": "~3.2.0",
     "angular-foundation": "~0.5.1",
     "ui-bootstrap": "~0.12.0",
-    "angular-bootstrap": "~0.12.0"
+    "angular-bootstrap": "~0.12.0",
+    "angular-file-upload": "~1.1.5"
   },
   "devDependencies": {}
 }

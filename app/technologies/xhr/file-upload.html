@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+    <h1>文件上传示例</h1>
+    <form>
+        <input id="files" type="file" multiple onchange="handleFiles(this.files)"/>
+        <button type="button" onclick="uploadButtonClick()">上传文件</button>
+    </form>
+    <div id="previewContainer"></div>
+    <script src="file-upload.js"></script>
+</body>
+</html>
