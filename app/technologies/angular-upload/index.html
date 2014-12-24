@@ -10,12 +10,14 @@
 <head>
     <meta charset="UTF-8">
     <title ng-bind="title"></title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/bower_components/angular-upload/src/directives/btnUpload.min.css"/>
 </head>
 <body ng-cloak>
 
     <h1 class="center" ng-bind="title"></h1>
     <div>
-
+        <div class="btn btn-primary btn-upload" upload-button url="/rest/files" on-success="onSuccess(response)">上传文件</div>
     </div>
 
     <script src="/bower_components/angular/angular.js"></script>

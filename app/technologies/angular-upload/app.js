@@ -14,7 +14,7 @@
 (function (window, document) {
     'use strict';
 
-    var App = angular.module('app', []);
+    var App = angular.module('app', ['lr.upload']);
 
     App.run(['$rootScope', function ($rootScope) {
         $rootScope.title = 'angular-upload 上传示例';
