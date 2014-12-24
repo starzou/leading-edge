@@ -20,8 +20,19 @@
         $rootScope.title = 'angular-file-upload 上传示例';
     }]);
 
-    App.controller('AppController', ['$scope', function ($scope) {
+    App.controller('AppController', ['$scope', 'FileUploader', function ($scope, FileUploader) {
         console.log($scope);
 
+        var uploader = $scope.uploader = new FileUploader({
+            url: '/rest/files'
+        });
+
+        uploader.filters.push({
+            name: 'customFilter',
+            fn  : function (item, options) {
+                console.log(item, options);
+                return this.queue.length < 3;
+            }
+        });
     }]);
 })(window, document);
