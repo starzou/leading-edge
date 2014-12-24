@@ -22,5 +22,9 @@
 
     App.controller('AppController', ['$scope', '$compile', '$parse', function ($scope, $compile, $parse) {
         console.log($scope);
+
+        $scope.onSuccess = function (response) {
+            console.log(response);
+        }
     }]);
 })(window, document);
