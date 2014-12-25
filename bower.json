@@ -22,7 +22,8 @@
     "ui-bootstrap": "~0.12.0",
     "angular-bootstrap": "~0.12.0",
     "angular-file-upload": "~1.1.5",
-    "angular-upload": "~1.0.11"
+    "angular-upload": "~1.0.11",
+    "ui-router": "~0.2.13"
   },
   "devDependencies": {}
 }
