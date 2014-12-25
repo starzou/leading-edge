@@ -18,13 +18,13 @@
 
     App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/home/');
 
         $stateProvider
             .state('home', {
-                url       : '/home/:name',
-                template  : '<h1>home</h1>',
-                controller: 'HomeController'
+                url        : '/home/:name',
+                templateUrl: 'home.html',
+                controller : 'HomeController'
             })
             .state('page1', {
                 url     : '/page1',
