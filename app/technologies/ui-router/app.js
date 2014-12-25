@@ -21,6 +21,7 @@
         $stateProvider
             .state('home', {url: '/', template: '<h1>home</h1>'})
             .state('page1', {url: '/page1', template: '<h1>page1</h1>'})
+            .state('page1.list', {url: '/list', template: '<h1>page1-list</h1>'})
             .state('page2', {url: '/page2', template: '<h1>page2</h1>'})
             .state('page3', {url: '/page3', templateUrl: 'page3.html'});
     }]);
