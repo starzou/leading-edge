@@ -65,8 +65,8 @@
         console.log('AppController', $scope);
     }]);
 
-    App.controller('HomeController', ['$scope', function ($scope) {
-        console.log('HomeController', $scope);
+    App.controller('HomeController', ['$scope', '$stateParams', function ($scope, $stateParams) {
+        console.log('HomeController', $stateParams);
     }]);
 
 })(window, document);
