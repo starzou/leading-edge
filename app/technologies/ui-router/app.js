@@ -26,6 +26,10 @@
                 templateUrl: 'home.html',
                 controller : 'HomeController'
             })
+            .state('home.list', {
+                url     : '/list',
+                template: '<h1>this home list</h1>'
+            })
             .state('page1', {
                 url     : '/page1',
                 template: '<h1>page1</h1>'
