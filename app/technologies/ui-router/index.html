@@ -13,9 +13,13 @@
 </head>
 <body ng-cloak>
     <h1 ng-bind="title"></h1>
-    <div>
-
-    </div>
+    <div ui-view></div>
+    <ul>
+        <li><a ui-sref="home">home</a></li>
+        <li><a ui-sref="page1">page1</a></li>
+        <li><a ui-sref="page2">page2</a></li>
+        <li><a ui-sref="page3">page3</a></li>
+    </ul>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/ui-router/release/angular-ui-router.js"></script>
     <script src="app.js"></script>
