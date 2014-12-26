@@ -118,8 +118,10 @@
 
     App.directive('z1', [function () {
         return {
-            restrict: 'EA',
-            template: '<h1 style="color: red;">hello z1</h1>'
+            restrict  : 'EA',
+            template  : '<div><h1 style="color: red;">hello z1</h1><div ng-transclude></div></div>',
+            transclude: true,
+            replace   : true
         };
     }]);
 
