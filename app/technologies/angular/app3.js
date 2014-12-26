@@ -121,7 +121,23 @@
             restrict  : 'EA',
             template  : '<div><h1 style="color: red;">hello z1</h1><div ng-transclude></div></div>',
             transclude: true,
-            replace   : true
+            replace   : true,
+            link      : function ($scope, $element, $attr) {
+                console.log('z1 link...');
+                console.log($element);
+            }
+        };
+    }]);
+
+    App.directive('z2', [function () {
+        return {
+            restrict: 'EA',
+            template: '<div><h1 style="color: red;">hello z2</h1></div>',
+            replace : true,
+            link    : function ($scope, $element, $attr) {
+                console.log('z2 link...');
+                console.log($element);
+            }
         };
     }]);
 
