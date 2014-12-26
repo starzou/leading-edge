@@ -34,7 +34,7 @@
             .state('home.list.msg', {
                 url  : '/msg',
                 views: {
-                    'homeList': {
+                    'index@': {
                         template: '<h1 style="color: #ff0000;">this is home-list-msg</h1>'
                     }
                 }
