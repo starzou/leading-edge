@@ -141,4 +141,35 @@
         };
     }]);
 
+    App.directive('boy', [function () {
+        return {
+            scope     : {},
+            replace   : true,
+            template  : '<div><pre ng-bind="boy | json"></pre></div>',
+            controller: ['$scope', function ($scope) {
+                var boy = {
+                    hobbies: []
+                };
+
+                this.addHobbies = function (name) {
+                    boy.hobbies.splice(boy.hobbies.length - 1, 0, name.split(','));
+                };
+
+                $scope.boy = boy;
+            }],
+            link      : function ($scope, $element, $attr) {
+                $scope.boy.name = $attr.boy;
+            }
+        };
+    }]);
+
+    App.directive('hobby', [function () {
+        return {
+            require: 'boy',
+            link   : function ($scope, $element, $attr, $ctrl) {
+                $ctrl.addHobbies($attr.hobby);
+            }
+        };
+    }]);
+
 })(window, document);
