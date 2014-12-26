@@ -116,4 +116,11 @@
         };
     }]);
 
+    App.directive('z1', [function () {
+        return {
+            restrict: 'EA',
+            template: '<h1 style="color: red;">hello z1</h1>'
+        };
+    }]);
+
 })(window, document);
