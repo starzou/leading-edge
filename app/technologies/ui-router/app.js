@@ -28,8 +28,16 @@
                 controller : 'HomeController'
             })
             .state('home.list', {
-                url     : '/list',
-                template: '<h1>this home list</h1>'
+                url        : '/list',
+                templateUrl: 'home-list.html'
+            })
+            .state('home.list.msg', {
+                url  : '/msg',
+                views: {
+                    'homeList': {
+                        template: '<h1 style="color: #ff0000;">this is home-list-msg</h1>'
+                    }
+                }
             })
             .state('page1', {
                 url     : '/page1',
