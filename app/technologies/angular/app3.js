@@ -187,4 +187,13 @@
         };
     }]);
 
+    App.directive('validateField', [function () {
+        return {
+            require: 'ngModel',
+            link   : function ($scope, $element, $attr, $ctrl) {
+                console.log($ctrl);
+            }
+        };
+    }]);
+
 })(window, document);
