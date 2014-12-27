@@ -191,7 +191,29 @@
         return {
             require: '?^ngModel',
             link   : function ($scope, $element, $attr, $ctrl) {
-                console.log($ctrl);
+                //console.log($ctrl);
+            }
+        };
+    }]);
+
+    App.directive('ccl', [function () {
+        return {
+            controller: ['$scope', function ($scope) {
+                console.log('controller...');
+                this.time = Date.now();
+            }],
+            compile   : function ($scope, $element, $attr) {
+                console.log('compile...');
+                return {
+                    pre : function ($scope, $element, $attr, $ctrl) {
+                        console.log('pre link...');
+                    },
+                    post: function ($scope, $element, $attr, $ctrl) {
+                        console.log('post link...');
+
+                        console.log($ctrl);
+                    }
+                };
             }
         };
     }]);
