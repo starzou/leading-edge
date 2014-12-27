@@ -189,7 +189,7 @@
 
     App.directive('validateField', [function () {
         return {
-            require: 'ngModel',
+            require: '?^ngModel',
             link   : function ($scope, $element, $attr, $ctrl) {
                 console.log($ctrl);
             }
