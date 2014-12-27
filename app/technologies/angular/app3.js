@@ -148,6 +148,7 @@
             restrict: 'EA',
             scope   : true,
             priority: 100,
+            //terminal: true,
             link    : function ($scope, $element, $attr) {
                 console.log('z3 link...');
                 console.log($element, $scope);
