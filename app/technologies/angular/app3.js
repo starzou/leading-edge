@@ -22,7 +22,7 @@
          * $parse 示例
          */
         var psFn = $parse('user.name');
-        console.log(psFn({user: {name: 'context-StarZou'}}, {user: {name: 'local-StarZou'}}));
+        //console.log(psFn({user: {name: 'context-StarZou'}}, {user: {name: 'local-StarZou'}}));
 
         $scope.title = 'Angular 研究 3';
         $scope.hello = 'Hello Angular 研究 3';
@@ -161,7 +161,7 @@
             scope     : {},
             replace   : true,
             template  : '<div><pre ng-bind="boy | json"></pre></div>',
-            controller: ['$scope', function ($scope) {
+            controller: ['$scope', '$element', '$attrs', '$transclude', function ($scope, $element, $attrs, $transclude) {
                 var boy = {
                     hobbies: []
                 };
