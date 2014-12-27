@@ -122,9 +122,10 @@
             template  : '<div><h1 style="color: red;">hello z1</h1><div ng-transclude></div></div>',
             transclude: true,
             replace   : true,
+            scope     : true,
             link      : function ($scope, $element, $attr) {
                 console.log('z1 link...');
-                console.log($element);
+                console.log($element, $scope);
             }
         };
     }]);
@@ -134,9 +135,22 @@
             restrict: 'EA',
             template: '<div><h1 style="color: red;">hello z2</h1></div>',
             replace : true,
+            scope   : true,
             link    : function ($scope, $element, $attr) {
                 console.log('z2 link...');
-                console.log($element);
+                console.log($element, $scope);
+            }
+        };
+    }]);
+
+    App.directive('z3', [function () {
+        return {
+            restrict: 'EA',
+            scope   : true,
+            priority: 100,
+            link    : function ($scope, $element, $attr) {
+                console.log('z3 link...');
+                console.log($element, $scope);
             }
         };
     }]);
