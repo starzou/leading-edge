@@ -7,8 +7,46 @@
 (function (window, document) {
     'use strict';
 
-    console.log(_.compact([0, 1, false, 2, '', 3]));
+    //var value, obj = {};
+    //
+    //value = _.map({'one': 1, 'two': 2, 'three': 3}, function (value, key) {
+    //    obj[key] = value * 3;
+    //
+    //    console.log(arguments);
+    //
+    //    return value * 3;
+    //});
+    //
+    //
+    //value = _.map([1, 2, 3], function (value, key) {
+    //    obj[key] = value * 3;
+    //
+    //    console.log(arguments);
+    //
+    //    return value * 3;
+    //});
+    //
+    //console.log(value);
+    //console.log(obj);
 
-    console.log(_.difference([1, 2, 3, 4, 5], [5, 2, 10]));
+
+    //var v = _.invoke([1, 2, 3], function () {
+    //    return this * 3;
+    //});
+    //console.log(v);
+
+
+    //var sum = _.reduce(['a', 'b', 'x'], function (sum, num) {
+    //    console.log(arguments);
+    //    return sum + num;
+    //});
+
+    //var mapped = _.reduce({'a': 8, 'b': 6, 'c': 7}, function (o, num, key) {
+    //    console.log(arguments);
+    //    return o + num;
+    //});
+    //console.log(mapped);
+
+
 
 })(window, document);
