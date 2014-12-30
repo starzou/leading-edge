@@ -17,6 +17,18 @@ body > div h2 {
 
 .x-color-picker {
     background-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    border-left-color: rgb(255, 255, 255);
+    border-left-style: solid;
+    border-left-width: 0px;
+    border-right-color: rgb(255, 255, 255);
+    border-right-style: solid;
+    border-right-width: 0px;
+    border-top-color: rgb(255, 255, 255);
+    border-top-style: solid;
+    border-top-width: 0px;
     box-sizing: border-box;
     color: rgb(0, 0, 0);
     display: block;
@@ -28,6 +40,18 @@ body > div h2 {
 
 .x-color-picker-item {
     background-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(255, 255, 255);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(255, 255, 255);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(255, 255, 255);
+    border-top-style: solid;
+    border-top-width: 1px;
     box-sizing: border-box;
     color: rgb(85, 26, 139);
     cursor: pointer;
@@ -36,6 +60,10 @@ body > div h2 {
     font-family: tahoma, arial, verdana, sans-serif;
     font-size: 12px;
     height: 18px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
     text-decoration: none;
     width: 18px;
 }
@@ -44,10 +72,24 @@ body > div h2 {
     -webkit-background-clip: border-box;
     -webkit-background-origin: padding-box;
     -webkit-background-size: auto;
+    background-attachment: scroll;
     background-clip: border-box;
+    background-color: rgb(153, 51, 102);
     background-image: none;
     background-origin: padding-box;
     background-size: auto;
+    border-bottom-color: rgb(172, 168, 153);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(172, 168, 153);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(172, 168, 153);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(172, 168, 153);
+    border-top-style: solid;
+    border-top-width: 1px;
     box-sizing: border-box;
     color: rgb(85, 26, 139);
     cursor: pointer;
