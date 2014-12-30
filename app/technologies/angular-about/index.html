@@ -29,13 +29,13 @@
         }
     </style>
 </head>
-<body ng-cloak>
+<body ng-cloak ng-style="{'background-color' : bgColor}">
     <h1 class="center" ng-bind="title"></h1>
 
     <div>
         <div>
             <h2>angular-bootstrap-colorpicker 研究</h2>
-            <input colorpicker type="text" ng-model="your_model" />
+            <input colorpicker type="text" ng-model="bgColor" />
         </div>
     </div>
 
