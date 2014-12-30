@@ -1,0 +1,60 @@
+body > div > div {
+    margin-bottom: 50px;
+    border: 3px dashed green;
+    padding: 20px;
+}
+
+body > div h2 {
+    color: blue;
+}
+
+.center {
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+/*my style*/
+
+.x-color-picker {
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: tahoma, arial, verdana, sans-serif;
+    font-size: 12px;
+    height: 90px;
+    width: 144px;
+}
+
+.x-color-picker-item {
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    color: rgb(85, 26, 139);
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: tahoma, arial, verdana, sans-serif;
+    font-size: 12px;
+    height: 18px;
+    text-decoration: none;
+    width: 18px;
+}
+
+.x-color-picker-item-inner {
+    -webkit-background-clip: border-box;
+    -webkit-background-origin: padding-box;
+    -webkit-background-size: auto;
+    background-clip: border-box;
+    background-image: none;
+    background-origin: padding-box;
+    background-size: auto;
+    box-sizing: border-box;
+    color: rgb(85, 26, 139);
+    cursor: pointer;
+    display: block;
+    font-family: tahoma, arial, verdana, sans-serif;
+    font-size: 12px;
+    height: 12px;
+    line-height: 10px;
+    width: 12px;
+}
