@@ -1,0 +1,48 @@
+<!--
+  ~ https://github.com/starzou
+  ~
+  ~ Copyright (c) 2014 StarZou
+  ~ Licensed under the MIT license.
+  -->
+
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app" ng-controller="AppController">
+<head>
+    <meta charset="UTF-8">
+    <title ng-bind="title"></title>
+    <link rel="stylesheet" href="../../bower_components/animate.css/animate.css"/>
+    <link rel="stylesheet" href=../../bower_components/angular-bootstrap-colorpicker/css/colorpicker.css>
+    <style>
+        body > div > div {
+            margin-bottom: 50px;
+            border: 3px dashed green;
+            padding: 20px;
+        }
+
+        body > div h2 {
+            color: blue;
+        }
+
+        .center {
+            margin: 20px auto;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body ng-cloak>
+    <h1 class="center" ng-bind="title"></h1>
+
+    <div>
+        <div>
+            <h2>angular-bootstrap-colorpicker 研究</h2>
+            <input colorpicker type="text" ng-model="your_model" />
+        </div>
+    </div>
+
+    <script src="../../bower_components/angular/angular.js"></script>
+
+    <script src="../../bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>
