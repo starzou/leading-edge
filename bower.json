@@ -24,7 +24,9 @@
     "angular-file-upload": "~1.1.5",
     "angular-upload": "~1.0.11",
     "ui-router": "~0.2.13",
-    "angular-bootstrap-colorpicker": "~3.0.11"
+    "angular-bootstrap-colorpicker": "~3.0.11",
+    "ng-table": "~0.3.3",
+    "angular-loading-bar": "~0.6.0"
   },
   "devDependencies": {}
 }
