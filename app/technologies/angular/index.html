@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular 实践</title>
-    <style>
+    <link rel="stylesheet" href="../../bower_components/angular-loading-bar/build/loading-bar.css"/>
+    <!--<style>
         .ng-invalid {
             border: 2px solid red;
         }
@@ -26,7 +27,7 @@
         body > div > div > h2 {
             color: blue;
         }
-    </style>
+    </style>-->
 </head>
 <body>
     <h1 ng-bind="app.name" style="color: red;display: inline-block;"></h1><span ng-bind="app.date | date:'yyyy-MM-dd hh:mm:ss.sss'"></span>
@@ -203,6 +204,8 @@
     <script src="/bower_components/angular-resource/angular-resource.js"></script>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/bower_components/restangular/dist/restangular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../../bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

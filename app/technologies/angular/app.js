@@ -16,7 +16,7 @@
 /**
  * 定义模块
  */
-var App = angular.module('App', ['ngRoute', 'ngResource', 'restangular']);
+var App = angular.module('App', ['ngRoute', 'ngResource', 'restangular', 'angular-loading-bar', 'ngAnimate']);
 
 /**
  * App.config 配置块
