@@ -40,13 +40,22 @@
 
     var body = document.body;
 
-    var myCanvas = document.getElementById('myCanvas');
-
-    var glCtx = myCanvas.getContext('webgl');
-
-    var d2Ctx = myCanvas.getContext('2d');
-
+    var webGLCanvas = document.getElementById('webGLCanvas');
+    var glCtx = webGLCanvas.getContext('webgl');
     console.log(glCtx);
+
+    var d2Canvas = document.getElementById('d2Canvas');
+    var d2Ctx = d2Canvas.getContext('2d');
     console.log(d2Ctx);
+
+    /**
+     * 绘矩形
+     */
+    var doRectBtn = document.getElementById('doRectBtn');
+    doRectBtn.onclick = function () {
+        d2Ctx.fillStyle = 'green';
+        d2Ctx.fillRect(20, 20, 100, 100);
+    };
+
 
 })(window, document);
