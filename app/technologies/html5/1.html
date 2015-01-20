@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+  ~ https://github.com/starzou
+  ~
+  ~ Copyright (c) 2014 StarZou
+  ~ Licensed under the MIT license.
+  -->
+
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 - 1</title>
+    <style>
+        canvas {
+            border: 1px red solid;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        h2 {
+            color: blue;
+        }
+
+        button {
+            margin: 5px 0px;
+            line-height: 1;
+            background-color: #3b83c0;
+            text-align: center;
+            text-shadow: none;
+            text-decoration: none;
+            padding: .78571em 1.5em;
+            border: none;
+            box-shadow: 0 0 rgba(39, 41, 43, .15) inset;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Hi, HTML5 !</h1>
+
+        <div>
+            <div class="inline">
+                <h2>Web Gl</h2>
+
+                <div>
+                    <button>other</button>
+                </div>
+                <canvas id="webGLCanvas" width="640" height="480"></canvas>
+            </div>
+            <div class="inline">
+                <h2>2d </h2>
+
+                <div>
+                    <button id="doRectBtn">绘矩形</button>
+                </div>
+                <canvas id="d2Canvas" width="640" height="480"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="1.js"></script>
+</body>
+</html>
