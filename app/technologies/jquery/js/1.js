@@ -17,6 +17,7 @@
     console.log(title);
 
     var h1 = $('h1');
+    h1.html(new Date());
     console.log(h1);
 
 })(window, document);
