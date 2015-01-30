@@ -18,6 +18,7 @@
 
     var h1 = $('h1');
     h1.html(new Date());
-    console.log(h1);
+    console.log(h1.offset());
+    console.log(h1.position());
 
 })(window, document);
