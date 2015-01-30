@@ -13,6 +13,10 @@
  **/
 (function (window, document) {
     'use strict';
-    console.log('jquery 研究...');
+    var title = 'jquery 研究...';
+    console.log(title);
+
+    var h1 = $('h1');
+    console.log(h1);
 
 })(window, document);
