@@ -218,6 +218,32 @@
         };
     }]);
 
+    App.provider('users', ['$q', '$timeout', function ($q, $timeout) {
+        this.$get = [function () {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+            var self = {
+                query: function () {
+                    var startTime = Date.now();
+                    $timeout(function () {
+                        var endTime = Date.now();
+                        var data = {
+                            list     : [{name: '张三'}, {name: '李四'}, {name: '王五'}],
+                            startTime: startTime,
+                            endTime  : endTime
+                        };
+                        deferred.resolve(data);
+                    }, 3000);
+                    return promise.then(function () {
+                        console.log('服务内部');
+                    });
+                }
+            };
+            self.$promise = promise;
+            return self;
+        }];
+    }]);
+
     App.controller('OneController', ['$scope', function ($scope) {
         $scope.title = 'angular 服务';
     }]);
