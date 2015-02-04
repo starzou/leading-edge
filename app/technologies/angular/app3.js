@@ -218,4 +218,8 @@
         };
     }]);
 
+    App.controller('OneController', ['$scope', function ($scope) {
+        $scope.title = 'angular 服务';
+    }]);
+
 })(window, document);
