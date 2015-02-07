@@ -41,6 +41,10 @@
                 {"label": "Admin", "id": "role2", "children": []},
                 {"label": "Guest", "id": "role3", "children": []}
             ];
+
+        $scope.buttonClick = function (event) {
+            console.log(event);
+        };
     }]);
 
 })(window, document);
