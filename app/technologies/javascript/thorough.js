@@ -12,4 +12,21 @@
 
     tilteElement.textContent = name;
 
+    function f() {
+        var name = 'f 函数 中的name';
+
+        console.log('f this', this);
+
+        function getName() {
+            return name;
+        }
+
+        return getName;
+    }
+
+    var getName = f.call({name: 'f warp'});
+    var myName = getName();
+
+    console.log(myName);
+
 })(window, document);
