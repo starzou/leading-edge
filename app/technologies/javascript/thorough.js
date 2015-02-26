@@ -49,11 +49,15 @@
                     $('c', ec, parents);
                 }
             }
+        } else if (selector === 'all') {
+            parents = $('p', element);
+            parents.push(element);
+            $('c', element, parents);
         }
 
         return parents;
     }
 
     var buttonDiv = document.getElementById('buttonDiv');
-    console.log($('c', buttonDiv));
+    console.log($('all', buttonDiv));
 })();
