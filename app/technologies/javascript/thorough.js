@@ -30,3 +30,30 @@
     console.log(myName);
 
 })(window, document);
+
+(function () {
+    function $(selector, element, data) {
+        var parents = data || [], midElement;
+        if (selector === 'p') {
+            midElement = element.parentElement;
+            if (midElement) {
+                parents.push(midElement);
+                $('p', midElement, parents);
+            }
+        } else if (selector === 'c') {
+            midElement = element.children;
+            if (midElement) {
+                for (var i = 0; i < midElement.length; i++) {
+                    var ec = midElement[i];
+                    parents.push(ec);
+                    $('c', ec, parents);
+                }
+            }
+        }
+
+        return parents;
+    }
+
+    var buttonDiv = document.getElementById('buttonDiv');
+    console.log($('c', buttonDiv));
+})();
