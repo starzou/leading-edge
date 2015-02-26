@@ -59,5 +59,13 @@
     }
 
     var buttonDiv = document.getElementById('buttonDiv');
-    console.log($('all', buttonDiv));
+
+    var elements = $('all', buttonDiv);
+    elements.forEach(function (element) {
+        element.addEventListener('click', clickFn);
+    });
+
+    function clickFn(event) {
+        console.log(event);
+    }
 })();
