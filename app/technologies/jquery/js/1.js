@@ -21,4 +21,7 @@
     console.log(h1.offset());
     console.log(h1.position());
 
+
+    var title = document.getElementById('title');
+    console.log(title.getBoundingClientRect());
 })(window, document);
