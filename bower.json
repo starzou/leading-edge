@@ -28,7 +28,11 @@
     "ng-table": "~0.3.3",
     "angular-loading-bar": "~0.6.0",
     "mustache": "~0.8.2",
-    "angular.treeview": "*"
+    "angular.treeview": "*",
+    "velocity": "~1.2.2",
+    "jquery.transit": "~0.9.12",
+    "knockout": "~3.3.0",
+    "ember": "~1.10.0"
   },
   "devDependencies": {}
 }
